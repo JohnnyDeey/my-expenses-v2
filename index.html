@@ -1949,11 +1949,15 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
 
 /* Stats toggle */
 .stg-btn {
-  background:none; border:none; border-radius:16px; color:rgba(255,255,255,.4);
-  font-size:.62rem; font-weight:600; padding:4px 10px; cursor:pointer;
+  background:none; border:none; border-radius:16px; color:rgba(255,255,255,.45);
+  font-size:.7rem; font-weight:600; padding:6px 14px; cursor:pointer;
   font-family:'DM Sans',sans-serif; transition:all .2s; white-space:nowrap;
 }
-.stg-btn.active { background:rgba(200,150,30,.3); color:var(--gold2); }
+.stg-btn.active {
+  background:linear-gradient(135deg,rgba(200,150,30,.6),rgba(160,100,20,.7));
+  color:#fff; box-shadow:0 2px 8px rgba(200,150,30,.3);
+  border:1px solid rgba(200,150,30,.5);
+}
 
 
 /* Month Calendar */
@@ -1967,6 +1971,22 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
 .cal-month-btn:active { transform:scale(.93); }
 .cal-month-btn.has-data { border-color:rgba(200,150,30,.4); color:var(--gold); }
 .cal-month-btn.selected { background:linear-gradient(135deg,rgba(200,150,30,.4),rgba(160,100,20,.5)); border-color:var(--gold2); color:#fff; box-shadow:0 2px 10px rgba(200,150,30,.3); }
+
+
+/* Black readable text in module panels */
+#module-content .panel { color:#1a0f05 !important; }
+#module-content .card { color:#1a0f05 !important; }
+#module-content table { color:#1a0f05 !important; }
+#module-content td, #module-content th { color:#1a0f05 !important; }
+#module-content .led-desc, #module-content .led-date { color:#1a0f05 !important; }
+#module-content [style*="color:var(--ink)"] { color:#1a0f05 !important; }
+#module-content [style*="color:#1a1410"] { color:#1a0f05 !important; }
+#module-content .insight-val, #module-content .insight-label { color:#1a0f05 !important; }
+#module-content .section-title { color:#1a0f05 !important; font-family:'Playfair Display',serif !important; font-size:1.1rem !important; letter-spacing:0 !important; text-transform:none !important; }
+/* Dashboard specific */
+#module-content #panel-dashboard .card * { color:#1a0f05 !important; }
+#module-content #panel-ledger .led-row td { color:#1a0f05 !important; }
+#module-content #panel-ledger .led-desc { color:#1a0f05 !important; font-weight:600; }
 
 /* Nav arrow buttons in module topbar */
 .nav-arrow-btn { background:rgba(200,150,30,.15); border:1px solid rgba(200,150,30,.3); border-radius:8px; color:var(--gold2); cursor:pointer; padding:6px 14px; font-size:1rem; font-weight:700; transition:all .15s; line-height:1; }
@@ -2068,6 +2088,7 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
     </div>
     <div class="topbar-right">
       <button class="topbar-btn" onclick="openHelp()" title="Help">&#10067;</button>
+      <button class="topbar-btn" id="card-eye-btn" onclick="toggleStatsCard()" title="Hide/Show card">&#128065;</button>
       <button class="topbar-btn" onclick="openDateLookup()" title="Date lookup">&#128467;</button>
       <button class="topbar-btn" onclick="showPinScreen();showLoginStep();" title="Lock">&#128275;</button>
       <button class="topbar-btn" id="app-theme-btn" onclick="toggleAppTheme()" title="Theme">&#127769;</button>
@@ -15411,7 +15432,7 @@ function toggleAppTheme() {
   }
 })();
 
-var APP_VERSION  = '2.5.2';
+var APP_VERSION  = '2.5.3';
 // Dynamically update all version displays
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('#app-version-display').forEach(function(el) {
@@ -19072,9 +19093,14 @@ function _buildCalendar() {
   if (lbl) lbl.textContent = _calYear;
   // Which months have data?
   var uid  = (typeof _userId!=='undefined'&&_userId)?_userId:'default';
-  var key  = _statsMode==='income' ? 'income_ledger_' : 'expense_ledger_';
   var data = [];
-  try { data = JSON.parse(localStorage.getItem(key+uid)||'[]'); } catch(e){}
+  try {
+    if (_statsMode==='income') {
+      data = JSON.parse(localStorage.getItem('income_ledger_'+uid)||'[]');
+    } else {
+      data = JSON.parse(localStorage.getItem('expense_ledger')||'[]');
+    }
+  } catch(e){}
   var hasData = {};
   data.forEach(function(i){
     if (!i.date) return;
@@ -19104,7 +19130,7 @@ function calNextYear() { _calYear++; _buildCalendar(); _renderMonthStats(); }
 function _renderStats() {
   var uid  = (typeof _userId!=='undefined'&&_userId)?_userId:'default';
   var expL = []; var incL = [];
-  try { expL = JSON.parse(localStorage.getItem('expense_ledger_'+uid)||'[]'); } catch(e){}
+  try { expL = JSON.parse(localStorage.getItem('expense_ledger')||'[]'); } catch(e){}
   try { incL = JSON.parse(localStorage.getItem('income_ledger_'+uid)||'[]'); } catch(e){}
   var data = _statsMode==='income' ? incL : expL;
 
@@ -19128,9 +19154,14 @@ function _renderStats() {
 
 function _renderMonthStats() {
   var uid  = (typeof _userId!=='undefined'&&_userId)?_userId:'default';
-  var key  = _statsMode==='income' ? 'income_ledger_' : 'expense_ledger_';
   var data = [];
-  try { data = JSON.parse(localStorage.getItem(key+uid)||'[]'); } catch(e){}
+  try {
+    if (_statsMode==='income') {
+      data = JSON.parse(localStorage.getItem('income_ledger_'+uid)||'[]');
+    } else {
+      data = JSON.parse(localStorage.getItem('expense_ledger')||'[]');
+    }
+  } catch(e){}
 
   var month = data.filter(function(i){
     if (!i.date) return false;
@@ -19208,12 +19239,24 @@ setTimeout(function(){
   });
 }, 2000);
 
+// Hide/show stats card
+var _cardVisible = true;
+function toggleStatsCard() {
+  _cardVisible = !_cardVisible;
+  var card = document.querySelector('.stats-card');
+  var btn  = document.getElementById('card-eye-btn');
+  if (card) card.style.display = _cardVisible ? '' : 'none';
+  if (btn)  btn.innerHTML = _cardVisible ? '&#128065;' : '&#128372;';
+}
+
 // Init
 document.addEventListener('DOMContentLoaded', function(){
   showHomeScreen();
   statsSetMode('expenses');
-  setTimeout(syncHomeScreen, 800);
-  setTimeout(syncHomeScreen, 2500);
+  // Sync multiple times to catch when _userId loads
+  setTimeout(syncHomeScreen, 500);
+  setTimeout(syncHomeScreen, 1500);
+  setTimeout(syncHomeScreen, 4000);
 });
 
 </script>
