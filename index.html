@@ -4014,7 +4014,7 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
       <p style="margin-bottom:14px;">My Expense Ledger was designed and built by <strong>John-de-Scholar</strong> (John Damilola Sunday). By using this app you accept that the developer name appears on the login screen, Help panel, and printed reports.</p>
 
       <p style="font-weight:700;margin-bottom:6px;">22. Last Updated</p>
-      <p style="margin-bottom:14px;">This Privacy Policy and Terms of Service were last updated on <strong>25 March 2026</strong> (v2.4.0). We reserve the right to update these terms. All users will be required to re-accept updated terms upon next login.</p>
+      <p style="margin-bottom:14px;">This Privacy Policy and Terms of Service were last updated on <strong>29 March 2026</strong> (v2.5.3). We reserve the right to update these terms. All users will be required to re-accept updated terms upon next login.</p>
 
       <p style="font-weight:700;margin-bottom:6px;">23. Contact</p>
       <p style="margin-bottom:0;">Questions about your data or these terms? Contact us at myfinanceledgerapp [at] gmail.com. We aim to respond within 48 hours.</p>
@@ -4033,7 +4033,7 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
     <p style="font-weight:700;margin-bottom:6px;">1. Your Data &amp; Privacy</p><p style="margin-bottom:12px;">All financial data you enter is stored in your personal Firebase account under a unique private ID. It is completely private. No other user can access your data.</p>
     <p style="font-weight:700;margin-bottom:6px;">2. Data Storage</p><p style="margin-bottom:12px;">Your data is stored in Google Firebase Firestore. We do not sell, share, or transfer your data to any third party.</p>
     <p style="font-weight:700;margin-bottom:6px;">3. Authentication &amp; PIN Security</p><p style="margin-bottom:12px;">Your PIN is hashed and never stored in plain text. A periodic full identity check is triggered every 1–2 weeks.</p>
-    <p style="font-weight:700;margin-bottom:6px;">4. Session Security &amp; Auto-Lock</p><p style="margin-bottom:12px;">The app locks after 10 minutes of inactivity.</p>
+    <p style="font-weight:700;margin-bottom:6px;">4. Session Security &amp; Auto-Lock</p><p style="margin-bottom:12px;">The app locks after 10 minutes of inactivity. Navigate between modules using the icon grid on the home screen or the bottom navigation bar.</p>
     <p style="font-weight:700;margin-bottom:6px;">5. Usage Analytics</p><p style="margin-bottom:12px;">Anonymous usage statistics via Google Analytics. No financial data is shared.</p>
     <p style="font-weight:700;margin-bottom:6px;">6. No Advertising</p><p style="margin-bottom:12px;">No advertisements. Your data is never used for marketing.</p>
     <p style="font-weight:700;margin-bottom:6px;">7. Developer &amp; Branding</p><p style="margin-bottom:12px;">Built by John-de-Scholar (John Damilola Sunday). Developer name appears on login screen, Help, and reports.</p>
@@ -4043,7 +4043,7 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
     <p style="font-weight:700;margin-bottom:6px;">11. Right to Data Export</p><p style="margin-bottom:12px;">Export your data anytime via PDF Report (Dashboard) or Monthly Report (Income). Full CSV export coming in a future update.</p>
     <p style="font-weight:700;margin-bottom:6px;">12. Age Restriction</p><p style="margin-bottom:12px;">You must be at least 16 years old to use this app. By registering you confirm you meet this requirement.</p>
     <p style="font-weight:700;margin-bottom:6px;">13. Local Storage</p><p style="margin-bottom:12px;">This app uses device local storage (similar to cookies) to remember your session and preferences. No tracking cookies are used.</p>
-    <p style="font-weight:700;margin-bottom:6px;">14. Governing Law</p><p style="margin-bottom:12px;">Governed by Nigerian law (NDPR) and GDPR where applicable. Last updated: 23 March 2026 (v2.3.0).</p>
+    <p style="font-weight:700;margin-bottom:6px;">14. Governing Law</p><p style="margin-bottom:12px;">Governed by Nigerian law (NDPR) and GDPR where applicable. Last updated: 29 March 2026 (v2.5.3).</p>
     <p style="font-weight:700;margin-bottom:6px;">15. Contact</p><p>myfinanceledgerapp [at] gmail.com</p>
   </div>
 </div>
@@ -15401,7 +15401,7 @@ var PRIVACY_VER  = '2026-03-25'; // bump to force all users to re-sign privacy
 // Set FORCE_UPDATE_AFTER to a version string to block users on older versions.
 // Leave as '' to never force. Example: '2.5.0' forces anyone below that to update.
 var FORCE_UPDATE_AFTER = '';
-var TOUR_VER     = '2026-03-23'; // bump ONLY when new slides are added to the tour
+var TOUR_VER     = '2026-03-29'; // bump ONLY when new slides are added to the tour
 // ── THEME TOGGLE ──────────────────────────────────────────────────
 var _THEME_KEY = 'mel_app_theme';
 function toggleAppTheme() {
@@ -16433,7 +16433,7 @@ function openUserManual() {
     out += '<div style="padding:10px;background:var(--paper2);border-radius:6px;border:1px solid var(--border);text-align:center;"><div style="font-size:1.4rem;">'+icon+'</div><div style="'+S+'font-size:0.62rem;'+MUTED+'margin-top:4px;">'+label+'</div></div>';
   });
   out += '</div>';
-  out += note('The app has <strong>two independent modules</strong>: Expenses and Income. Switch between them with the 🔁 button in the top header. All tabs, charts and data are completely separate between modules.');
+  out += note('The app has <strong>two independent modules</strong>: Expenses and Income. Both are accessible from the <strong>Home screen icon grid</strong>. Tap any icon to open that module. Use the <strong>? ?</strong> arrows in the module bar to move between sections. Switch between them with the 🔁 button in the top header. All tabs, charts and data are completely separate between modules.');
 
   // ── Quick Start ─────────────────────────────────────────────────────────
   out += h2('Quick Start — 3 Steps');
@@ -17613,7 +17613,7 @@ var TOUR_EXPENSES_STEPS = [
     arrow:null },
 
   // -- IMPORT --
-  { target:'#main-nav button:nth-child(1)', tab:'import', icon:'📥', title:'Import — Add Your Expenses',
+  { target:'.icon-card:nth-child(1)', tab:'import', icon:'📥', title:'Import — Add Your Expenses',
     body:'This is where everything starts. Tap <strong>Import</strong> to open the notepad and paste or type your expense entries.',
     arrow:'up' },
   { target:'#raw-input', tab:'import', icon:'✍️', title:'The Notepad — Type Your Entries',
@@ -17624,7 +17624,7 @@ var TOUR_EXPENSES_STEPS = [
     arrow:'up' },
 
   // -- CATEGORIZE --
-  { target:'#main-nav button:nth-child(2)', tab:'categorize', icon:'🏷️', title:'Categorize — Sort Your Spending',
+  { target:'.icon-card:nth-child(2)', tab:'categorize', icon:'🏷️', title:'Categorize — Sort Your Spending',
     body:'Every parsed entry appears here with a category dropdown. The app auto-suggests based on your history.',
     arrow:'up' },
   { target:'#cat-selall-btn', tab:'categorize', icon:'☐', title:'Categorize — Checkbox Actions',
@@ -17638,7 +17638,7 @@ var TOUR_EXPENSES_STEPS = [
     arrow:'up' },
 
   // -- LEDGER --
-  { target:'#main-nav button:nth-child(5)', tab:'ledger', icon:'📋', title:'Ledger — Your Complete Record',
+  { target:'.icon-card:nth-child(5)', tab:'ledger', icon:'📋', title:'Ledger — Your Complete Record',
     body:'Every saved entry lives here. Use the <strong>▼ Filters</strong> button to expand Year, Month, Currency and Category filters.',
     arrow:'up' },
   { target:'#led-selall-btn', tab:'ledger', icon:'☐', title:'Ledger — Checkbox Bulk Actions',
@@ -17649,20 +17649,20 @@ var TOUR_EXPENSES_STEPS = [
     arrow:'down' },
 
   // -- DAILY / DASHBOARD --
-  { target:'#main-nav button:nth-child(3)', tab:'daily', icon:'📅', title:'Daily View — See Any Day',
+  { target:'.icon-card:nth-child(3)', tab:'daily', icon:'📅', title:'Daily View — See Any Day',
     body:'Full spending breakdown for any date. Use the date picker to jump instantly.',
     arrow:'up' },
-  { target:'#main-nav button:nth-child(4)', tab:'dashboard', icon:'📊', title:'Dashboard — Charts & Totals',
+  { target:'.icon-card:nth-child(4)', tab:'dashboard', icon:'📊', title:'Dashboard — Charts & Totals',
     body:'Visual charts: <strong>Category Breakdown</strong> shows each category\'s % share of total spending. Monthly trend, heatmap and year-over-year growth included.',
     arrow:'up' },
 
   // -- BUDGET --
-  { target:'#main-nav button:nth-child(6)', tab:'budget', icon:'🎯', title:'Budget — Set Monthly Limits',
+  { target:'.icon-card:nth-child(6)', tab:'budget', icon:'🎯', title:'Budget — Set Monthly Limits',
     body:'Set a spending limit per category. Progress bars turn amber at 75% and red when exceeded. Each category gets its own unique colour.',
     arrow:'up' },
 
   // -- MANAGE / RECYCLE BIN --
-  { target:'#main-nav button:nth-child(7)', tab:'manage', icon:'⚙️', title:'Manage — Your Control Centre',
+  { target:'.icon-card:nth-child(7)', tab:'manage', icon:'⚙️', title:'Manage — Your Control Centre',
     body:'Profile, PIN change, data deletion, deleted items, currencies, CSV export — all here.',
     arrow:'up' },
   { target:'#avatar-circle', tab:'manage', icon:'😊', title:'Your Avatar — Tap to Personalise',
@@ -17693,7 +17693,7 @@ var TOUR_INCOME_STEPS = [
     arrow:null },
 
   // -- IMPORT --
-  { target:'#income-nav button:nth-child(1)', tab:'inc-import', icon:'📥', title:'Income Import Tab',
+  { target:null, tab:'inc-import', icon:'📥', title:'Income Import Tab',
     body:'Tap <strong>Import</strong> to open the income notepad. Toggle between <strong>Month mode</strong> and <strong>Year mode</strong> (paste a full year at once).',
     arrow:'up' },
   { target:'#inc-raw-input', tab:'inc-import', icon:'✍️', title:'Income Notepad — Type Earnings',
@@ -17704,7 +17704,7 @@ var TOUR_INCOME_STEPS = [
     arrow:'up' },
 
   // -- CATEGORIZE --
-  { target:'#income-nav button:nth-child(2)', tab:'inc-categorize', icon:'🏷️', title:'Income Categorize Tab',
+  { target:null, tab:'inc-categorize', icon:'🏷️', title:'Income Categorize Tab',
     body:'Every parsed income entry appears here. Use the <strong>▼ Filters</strong> to filter by Period, Currency and Category before assigning.',
     arrow:'up' },
   { target:'#inc-cat-selall-btn', tab:'inc-categorize', icon:'☐', title:'Income Categorize — Checkbox Actions',
@@ -17718,7 +17718,7 @@ var TOUR_INCOME_STEPS = [
     arrow:'up' },
 
   // -- LEDGER --
-  { target:'#income-nav button:nth-child(5)', tab:'inc-ledger', icon:'📋', title:'Income Ledger',
+  { target:null, tab:'inc-ledger', icon:'📋', title:'Income Ledger',
     body:'All income entries in one place. Tap <strong>▼ Filters</strong> to expand Year, Month, Currency and Category filters.',
     arrow:'up' },
   { target:'#inc-led-selall-btn', tab:'inc-ledger', icon:'☐', title:'Income Ledger — Checkbox Bulk Actions',
@@ -17729,10 +17729,10 @@ var TOUR_INCOME_STEPS = [
     arrow:'down' },
 
   // -- MONTHLY / DASHBOARD --
-  { target:'#income-nav button:nth-child(3)', tab:'inc-monthly', icon:'📅', title:'Monthly Income View',
+  { target:null, tab:'inc-monthly', icon:'📅', title:'Monthly Income View',
     body:'Month-by-month breakdown of all earnings. Compare months side by side and track trends over time.',
     arrow:'up' },
-  { target:'#income-nav button:nth-child(4)', tab:'inc-dashboard', icon:'📊', title:'Income Dashboard — Charts',
+  { target:null, tab:'inc-dashboard', icon:'📊', title:'Income Dashboard — Charts',
     body:'Income by category with <strong>% share</strong> of total shown next to each bar. Monthly totals, heatmap and year-over-year growth included.',
     arrow:'up' },
 
@@ -19191,7 +19191,7 @@ function _renderMonthStats() {
 }
 
 function _calcTotals(arr) {
-  var SYMS = {'NGN':'#','EUR':'E','USD':'$','GBP':'L','GHS':'C'};
+  var SYMS = {'NGN':'?','EUR':'?','USD':'$','GBP':'�','GHS':'?','KES':'KSh','ZAR':'R'};
   var NAMES = {'NGN':'NGN','EUR':'EUR','USD':'USD','GBP':'GBP','GHS':'GHS'};
   var t = {};
   arr.forEach(function(i){ var c=i.currency||'NGN'; t[c]=(t[c]||0)+Math.abs(i.amount||0); });
