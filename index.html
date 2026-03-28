@@ -1818,7 +1818,29 @@ body.light-theme #home-banner {
 body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-serif; margin:0; padding:0; overflow:hidden; height:100vh; }
 
 /* APP SHELL */
-#app-shell { display:flex; flex-direction:column; height:100vh; max-width:480px; margin:0 auto; background:#120c03; position:relative; overflow:hidden; }
+/* Desktop layout */
+#app-shell {
+  display: flex; flex-direction: column; height: 100vh;
+  background: #120c03; position: relative; overflow: hidden;
+}
+@media (min-width: 600px) {
+  body { background: #0a0604; }
+  #app-shell {
+    max-width: 480px; margin: 0 auto;
+    box-shadow: 0 0 60px rgba(0,0,0,.8);
+  }
+}
+@media (min-width: 900px) {
+  body::before {
+    content: 'My Expense Ledger';
+    position: fixed; top: 20px; left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; color: rgba(200,150,30,.3);
+    letter-spacing: .2em; text-transform: uppercase;
+    pointer-events: none;
+  }
+}
 
 /* TOP BAR */
 #app-topbar {
@@ -1890,7 +1912,7 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
 .mini-sel { background:rgba(0,0,0,.3); border:1px solid rgba(200,150,30,.3); border-radius:4px; color:var(--gold); font-family:'DM Mono',monospace; font-size:.6rem; padding:2px 4px; outline:none; cursor:pointer; }
 
 /* SECTION TITLES */
-.section-title { font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); font-family:'DM Mono',monospace; padding:16px 16px 8px; }
+.section-title { font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gold2); font-family:'DM Mono',monospace; padding:16px 16px 10px; text-shadow:0 1px 4px rgba(0,0,0,.5); }
 
 /* ICON GRID */
 .icon-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; padding:0 12px 4px; }
@@ -1901,7 +1923,7 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
   box-shadow:0 4px 12px rgba(0,0,0,.3); border:1px solid rgba(255,255,255,.06);
 }
 .icon-card:active .icon-card-inner { transform:scale(.9); }
-.icon-card-label { font-size:.62rem; font-weight:600; color:#c8a870; text-align:center; font-family:'DM Sans',sans-serif; }
+.icon-card-label { font-size:.65rem; font-weight:700; color:#e8c87a; text-align:center; font-family:'DM Sans',sans-serif; letter-spacing:.01em; }
 
 /* VERSION FOOTER */
 .app-version-footer { text-align:center; font-size:.65rem; color:#4a3520; font-family:'DM Mono',monospace; padding:16px 0 4px; }
@@ -1909,7 +1931,8 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
 /* MODULE SCREEN */
 #screen-module { display:flex; flex-direction:column; height:100%; }
 #module-topbar {
-  display:flex; align-items:center; justify-content:space-between;
+  display:none; /* shown by JS when in module */
+  align-items:center; justify-content:space-between;
   background:#1a0f05; padding:10px 14px; border-bottom:2px solid rgba(200,150,30,.25);
   flex-shrink:0; position:sticky; top:0; z-index:50;
 }
@@ -1937,6 +1960,15 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
 .bnav-label { font-size:.58rem; font-weight:600; color:#6a5030; font-family:'DM Sans',sans-serif; }
 .bnav-btn.active .bnav-icon { filter:drop-shadow(0 0 4px rgba(200,150,30,.6)); }
 .bnav-btn.active .bnav-label { color:var(--gold2); }
+
+
+/* Stats toggle */
+.stg-btn {
+  background:none; border:none; border-radius:16px; color:rgba(255,255,255,.4);
+  font-size:.62rem; font-weight:600; padding:4px 10px; cursor:pointer;
+  font-family:'DM Sans',sans-serif; transition:all .2s; white-space:nowrap;
+}
+.stg-btn.active { background:rgba(200,150,30,.3); color:var(--gold2); }
 
 /* Ensure original panels look good inside module content */
 #module-content header, #module-content #main-header { display:none !important; }
@@ -2039,19 +2071,28 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
       <!-- BALANCE / STATS CARD -->
       <div class="stats-card">
         <div class="stats-card-bg"></div>
+        <!-- Toggle: All / Expenses / Income -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div style="display:flex;background:rgba(0,0,0,.3);border-radius:20px;padding:3px;gap:2px;border:1px solid rgba(200,150,30,.2)">
+            <button onclick="statsSetMode('all')" id="stg-all" class="stg-btn active">All</button>
+            <button onclick="statsSetMode('expenses')" id="stg-exp" class="stg-btn">Expenses</button>
+            <button onclick="statsSetMode('income')" id="stg-inc" class="stg-btn">Income</button>
+          </div>
+          <div id="stats-mode-label" style="font-size:.6rem;color:rgba(255,255,255,.35);font-family:DM Mono,monospace">All entries</div>
+        </div>
         <div class="stats-row1">
           <div>
-            <div class="stats-label">Total Entries</div>
-            <div id="app-total-entries" class="stats-big">?</div>
+            <div class="stats-label" id="stats-count-label">Total Entries</div>
+            <div id="app-total-entries" class="stats-big">--</div>
           </div>
-          <div class="stats-mini-row">
+          <div class="stats-mini-row" id="stats-mini-both">
             <div class="stats-mini">
-              <div id="app-exp-count" class="stats-mini-num gold">?</div>
-              <div class="stats-mini-label">Expenses</div>
+              <div id="app-exp-count" class="stats-mini-num gold">--</div>
+              <div class="stats-mini-label">Exp</div>
             </div>
             <div class="stats-mini">
-              <div id="app-inc-count" class="stats-mini-num green">?</div>
-              <div class="stats-mini-label">Income</div>
+              <div id="app-inc-count" class="stats-mini-num green">--</div>
+              <div class="stats-mini-label">Inc</div>
             </div>
           </div>
         </div>
@@ -15348,7 +15389,7 @@ function toggleAppTheme() {
   }
 })();
 
-var APP_VERSION  = '2.5.0';
+var APP_VERSION  = '2.5.1';
 // Dynamically update all version displays
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('#app-version-display').forEach(function(el) {
@@ -18468,6 +18509,8 @@ var _currentIncPanel = null;
 
 // Show home screen
 function showHomeScreen() {
+  document.getElementById('app-topbar').style.display = 'flex';
+  document.getElementById('module-topbar').style.display = 'none';
   document.getElementById('screen-home').style.display = '';
   document.getElementById('screen-module').style.display = 'none';
   _currentPanel = 'home';
@@ -18519,21 +18562,24 @@ var MODULE_TITLES = {
 function showModuleScreen(panelName) {
   document.getElementById('screen-home').style.display = 'none';
   document.getElementById('screen-module').style.display = 'flex';
-  // Set title
+  // Update topbar title in module mode
   var title = MODULE_TITLES[panelName] || panelName;
   document.getElementById('module-title').textContent = title;
+  document.getElementById('app-topbar').style.display = 'none'; // hide main topbar
+  document.getElementById('module-topbar').style.display = 'flex'; // show module bar
   // Bottom nav highlight
   document.querySelectorAll('.bnav-btn').forEach(function(b){ b.classList.remove('active'); });
   if (panelName.indexOf('inc-') === 0) document.getElementById('bnav-income').classList.add('active');
   else if (panelName === 'import' || panelName === 'categorize') document.getElementById('bnav-import').classList.add('active');
   else if (panelName === 'dashboard') document.getElementById('bnav-dash').classList.add('active');
   else if (panelName === 'manage') document.getElementById('bnav-manage').classList.add('active');
-  // Scroll to top of module content
   var mc = document.getElementById('module-content');
   if (mc) mc.scrollTop = 0;
 }
 
 function backToHome() {
+  document.getElementById('app-topbar').style.display = 'flex';
+  document.getElementById('module-topbar').style.display = 'none';
   showHomeScreen();
 }
 
@@ -18676,6 +18722,54 @@ document.addEventListener('DOMContentLoaded', function(){
   setTimeout(syncHomeScreen, 1000);
   setTimeout(syncHomeScreen, 3000);
 });
+
+
+var _statsMode = 'all';
+function statsSetMode(mode) {
+  _statsMode = mode;
+  document.querySelectorAll('.stg-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('stg-'+mode).classList.add('active');
+  var lbl = document.getElementById('stats-mode-label');
+  var countLbl = document.getElementById('stats-count-label');
+  var mExp = document.getElementById('stats-mini-exp');
+  var mInc = document.getElementById('stats-mini-inc');
+  if (mode === 'all') {
+    if (lbl) lbl.textContent = 'All entries';
+    if (countLbl) countLbl.textContent = 'Total Entries';
+    if (mExp) mExp.style.display = '';
+    if (mInc) mInc.style.display = '';
+  } else if (mode === 'expenses') {
+    if (lbl) lbl.textContent = 'Expenses only';
+    if (countLbl) countLbl.textContent = 'Expense Entries';
+    if (mExp) mExp.style.display = 'none';
+    if (mInc) mInc.style.display = 'none';
+  } else {
+    if (lbl) lbl.textContent = 'Income only';
+    if (countLbl) countLbl.textContent = 'Income Entries';
+    if (mExp) mExp.style.display = 'none';
+    if (mInc) mInc.style.display = 'none';
+  }
+  // Update counts
+  try {
+    var uid = (typeof _userId !== 'undefined' && _userId) ? _userId : 'default';
+    var expL = JSON.parse(localStorage.getItem('expense_ledger_'+uid)||'[]');
+    var incL = JSON.parse(localStorage.getItem('income_ledger_'+uid)||'[]');
+    var te = document.getElementById('app-total-entries');
+    var ec = document.getElementById('app-exp-count');
+    var ic = document.getElementById('app-inc-count');
+    if (mode === 'all') {
+      if (te) te.textContent = (expL.length + incL.length).toLocaleString();
+      if (ec) ec.textContent = expL.length.toLocaleString();
+      if (ic) ic.textContent = incL.length.toLocaleString();
+    } else if (mode === 'expenses') {
+      if (te) te.textContent = expL.length.toLocaleString();
+    } else {
+      if (te) te.textContent = incL.length.toLocaleString();
+    }
+    // Update pills too
+    if (mode === 'expenses' || mode === 'all') syncAllTimePills();
+  } catch(e) {}
+}
 
 </script>
 
