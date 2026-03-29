@@ -1797,233 +1797,234 @@ body.light-theme #home-banner {
 }
 
 
-/* ???????????????????????????????????????????????????
-   MY EXPENSE LEDGER ? NEW GOLD/BROWN PALMPAY THEME
-   ??????????????????????????????????????????????????? */
-:root {
-  --gold:   #c8961e;
-  --gold2:  #e8b84b;
-  --brown:  #1a0f05;
-  --brown2: #2e1a08;
-  --brown3: #3d2410;
-  --cream:  #f5ead8;
-  --ink:    #1a0f05;
-  --paper:  #f5ead8;
-  --muted:  #8a7055;
-  --border: #3d2410;
-  --green:  #4a7c59;
-}
+/* ═══ NEW APP SHELL ═══════════════════════════════════════ */
+#sticky-topbar, #fixed-topbar, #hdr-user-bar,
+#big-header-wrap, header, #main-header,
+#main-nav, #income-nav, #guest-banner { display:none !important; }
 
-/* RESET ORIGINAL THEME FOR NEW SHELL */
-body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-serif; margin:0; padding:0; overflow:hidden; height:100vh; }
-
-/* APP SHELL */
+/* App shell fills full screen */
 #app-shell {
-  display: flex; flex-direction: column; height: 100vh;
-  background: #120c03; position: relative; overflow: hidden;
-  width: 100%;
+  display:flex; flex-direction:column;
+  height:100vh; width:100%;
+  background:#120c03; overflow:hidden;
 }
-
-/* TOP BAR */
 #app-topbar {
   display:flex; align-items:center; justify-content:space-between;
-  background:#1a0f05; padding:10px 14px; padding-top:max(10px,env(safe-area-inset-top,10px));
+  background:#1a0f05; padding:10px 14px;
+  padding-top:max(10px,env(safe-area-inset-top,10px));
   border-bottom:1px solid rgba(200,150,30,.15); flex-shrink:0; z-index:100;
 }
 .topbar-left { display:flex; align-items:center; gap:10px; }
 #app-avatar {
-  width:38px; height:38px; border-radius:50%; background:rgba(200,150,30,.15);
-  display:flex; align-items:center; justify-content:center; font-size:1.3rem;
-  cursor:pointer; border:2px solid rgba(200,150,30,.3); flex-shrink:0;
+  width:38px; height:38px; border-radius:50%;
+  background:rgba(200,150,30,.15); display:flex; align-items:center;
+  justify-content:center; font-size:1.3rem; cursor:pointer;
+  border:2px solid rgba(200,150,30,.3); flex-shrink:0;
 }
-.topbar-user { }
-#app-username { font-size:.82rem; font-weight:700; color:var(--gold2); line-height:1.2; }
+#app-username { font-size:.82rem; font-weight:700; color:#e8b84b; line-height:1.2; }
 .topbar-sync { display:flex; align-items:center; gap:4px; margin-top:1px; }
 #app-sync-dot { display:inline-block; width:6px; height:6px; border-radius:50%; background:#555; }
 #app-sync-status { font-family:'DM Mono',monospace; font-size:.58rem; color:#888; }
 .topbar-right { display:flex; gap:5px; align-items:center; }
 .topbar-btn {
   background:none; border:1px solid rgba(200,150,30,.3); border-radius:8px;
-  color:var(--gold); cursor:pointer; padding:6px 9px; font-size:.95rem; line-height:1;
-  transition:all .15s;
+  color:#c8961e; cursor:pointer; padding:6px 9px; font-size:.95rem; line-height:1;
 }
 .topbar-btn:active { background:rgba(200,150,30,.15); }
-
-/* SCROLLABLE CONTENT */
-#app-content { flex:1; overflow-y:auto; overflow-x:hidden; padding-bottom:70px; -webkit-overflow-scrolling:touch; }
+#app-content {
+  flex:1; overflow-y:auto; overflow-x:hidden;
+  padding-bottom:70px; -webkit-overflow-scrolling:touch;
+}
 #app-content::-webkit-scrollbar { display:none; }
-
-/* HOME SCREEN */
-.app-screen { }
-#screen-home { padding:0 0 16px; }
 
 /* STATS CARD */
 .stats-card {
   background:linear-gradient(135deg,#3d2410 0%,#5a3818 40%,#3d2410 100%);
-  margin:12px; border-radius:18px; padding:18px 16px 14px;
-  position:relative; overflow:hidden;
-  box-shadow:0 8px 32px rgba(200,150,30,.2);
+  margin:12px; border-radius:18px; padding:16px 14px 12px;
   border:1px solid rgba(200,150,30,.2);
+  box-shadow:0 8px 32px rgba(200,150,30,.15);
+  position:relative; overflow:hidden;
 }
 .stats-card-bg {
   position:absolute; top:-40px; right:-40px; width:180px; height:180px;
-  border-radius:50%; background:rgba(200,150,30,.08);
+  border-radius:50%; background:rgba(200,150,30,.06);
 }
-.stats-row1 { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:14px; position:relative; }
-.stats-label { font-size:.62rem; color:rgba(255,255,255,.5); font-family:'DM Mono',monospace; letter-spacing:.1em; text-transform:uppercase; margin-bottom:4px; }
-.stats-big { font-size:2rem; font-weight:700; color:#fff; font-family:'Playfair Display',serif; line-height:1; }
-.stats-mini-row { display:flex; gap:16px; align-items:flex-start; }
-.stats-mini { text-align:center; }
-.stats-mini-num { font-size:1.2rem; font-weight:700; font-family:'Playfair Display',serif; }
-.stats-mini-num.gold { color:var(--gold2); }
-.stats-mini-num.green { color:#8dd4a8; }
-.stats-mini-label { font-size:.6rem; color:rgba(255,255,255,.45); font-family:'DM Mono',monospace; margin-top:2px; }
-
-/* PILLS ROW */
-.stats-pills-row { display:flex; align-items:flex-start; gap:0; position:relative; overflow-x:auto; scrollbar-width:none; }
-.stats-pills-row::-webkit-scrollbar { display:none; }
-.stats-pill-group { flex-shrink:0; }
-.pills-label { font-size:.56rem; color:rgba(255,255,255,.35); font-family:'DM Mono',monospace; letter-spacing:.1em; text-transform:uppercase; margin-bottom:5px; }
-.pills-wrap { display:flex; gap:5px; flex-wrap:nowrap; }
-.app-pill { font-family:'DM Mono',monospace; font-size:.68rem; font-weight:700; padding:3px 9px; border-radius:20px; white-space:nowrap; }
-.app-pill-gold { background:rgba(200,150,30,.25); color:var(--gold2); border:1px solid rgba(200,150,30,.35); }
-.app-pill-green { background:rgba(74,124,89,.3); color:#8dd4a8; border:1px solid rgba(74,124,89,.4); }
-.app-pill-brown { background:rgba(100,70,30,.3); color:#c8a06a; border:1px solid rgba(100,70,30,.4); }
-.app-pill-blue  { background:rgba(61,90,115,.3); color:#a0c4e8; border:1px solid rgba(61,90,115,.4); }
-.stats-divider { width:1px; min-height:30px; background:rgba(255,255,255,.12); margin:0 12px; flex-shrink:0; }
-.mini-sel { background:rgba(0,0,0,.3); border:1px solid rgba(200,150,30,.3); border-radius:4px; color:var(--gold); font-family:'DM Mono',monospace; font-size:.6rem; padding:2px 4px; outline:none; cursor:pointer; }
-
-/* SECTION TITLES */
-.section-title { font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gold2); font-family:'DM Mono',monospace; padding:16px 16px 10px; text-shadow:0 1px 4px rgba(0,0,0,.5); }
-
-/* ICON GRID */
-.icon-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; padding:0 12px 4px; }
-@media(min-width:700px){ .icon-grid { grid-template-columns:repeat(6,1fr); } }
-@media(min-width:1100px){ .icon-grid { grid-template-columns:repeat(8,1fr); } }
-@media(min-width:700px){ #module-content main { padding:24px 32px !important; } }
-.icon-card { display:flex; flex-direction:column; align-items:center; gap:6px; cursor:pointer; }
-.icon-card-inner {
-  width:58px; height:58px; border-radius:16px; display:flex; align-items:center;
-  justify-content:center; font-size:1.5rem; transition:all .15s;
-  box-shadow:0 4px 12px rgba(0,0,0,.3); border:1px solid rgba(255,255,255,.06);
-}
-.icon-card:active .icon-card-inner { transform:scale(.9); }
-.icon-card-label { font-size:.65rem; font-weight:700; color:#e8c87a; text-align:center; font-family:'DM Sans',sans-serif; letter-spacing:.01em; }
-
-/* VERSION FOOTER */
-.app-version-footer { text-align:center; font-size:.65rem; color:#4a3520; font-family:'DM Mono',monospace; padding:16px 0 4px; }
-
-/* MODULE SCREEN */
-#screen-module { display:flex; flex-direction:column; height:100%; }
-#module-topbar {
-  display:none; /* shown by JS when in module */
-  align-items:center; justify-content:space-between;
-  background:#1a0f05; padding:10px 14px; border-bottom:2px solid rgba(200,150,30,.25);
-  flex-shrink:0; position:sticky; top:0; z-index:50;
-}
-.module-back { background:none; border:1px solid rgba(200,150,30,.35); border-radius:8px; color:var(--gold); cursor:pointer; padding:6px 12px; font-size:.82rem; font-weight:600; font-family:'DM Sans',sans-serif; }
-.module-back:active { background:rgba(200,150,30,.15); }
-.module-title { font-size:.9rem; font-weight:700; color:var(--gold2); font-family:'Playfair Display',serif; }
-#module-content { flex:1; overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch; }
-#module-content::-webkit-scrollbar { width:3px; }
-#module-content::-webkit-scrollbar-track { background:transparent; }
-#module-content::-webkit-scrollbar-thumb { background:rgba(200,150,30,.3); border-radius:2px; }
-#module-content main { padding-top:0 !important; max-width:100% !important; background:var(--paper) !important; min-height:100%; }
-#module-content .panel { background:var(--paper) !important; }
-#module-content .panel.active { background:var(--paper) !important; }
-
-/* BOTTOM NAV */
-#app-bottom-nav {
-  position:fixed; bottom:0; left:50%; transform:translateX(-50%);
-  width:100%; z-index:200;
-  background:#1a0f05; border-top:1px solid rgba(200,150,30,.2);
-  display:flex; padding:6px 0; padding-bottom:max(6px,env(safe-area-inset-bottom,6px));
-  box-shadow:0 -4px 20px rgba(0,0,0,.4);
-}
-.bnav-btn { flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; background:none; border:none; cursor:pointer; padding:4px 0; transition:all .15s; -webkit-tap-highlight-color:transparent; }
-.bnav-icon { font-size:1.2rem; line-height:1; }
-.bnav-label { font-size:.58rem; font-weight:600; color:#6a5030; font-family:'DM Sans',sans-serif; }
-.bnav-btn.active .bnav-icon { filter:drop-shadow(0 0 4px rgba(200,150,30,.6)); }
-.bnav-btn.active .bnav-label { color:var(--gold2); }
-
-
-/* Stats toggle */
+.stg-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+.stg-toggle { display:flex; background:rgba(0,0,0,.4); border-radius:20px; padding:3px; gap:2px; border:1px solid rgba(200,150,30,.25); }
 .stg-btn {
-  background:none; border:none; border-radius:16px; color:rgba(255,255,255,.45);
-  font-size:.7rem; font-weight:600; padding:6px 14px; cursor:pointer;
-  font-family:'DM Sans',sans-serif; transition:all .2s; white-space:nowrap;
+  background:none; border:none; border-radius:16px;
+  color:rgba(255,255,255,.45); font-size:.7rem; font-weight:600;
+  padding:6px 14px; cursor:pointer; font-family:'DM Sans',sans-serif;
+  transition:all .2s; white-space:nowrap;
 }
 .stg-btn.active {
   background:linear-gradient(135deg,rgba(200,150,30,.6),rgba(160,100,20,.7));
   color:#fff; box-shadow:0 2px 8px rgba(200,150,30,.3);
   border:1px solid rgba(200,150,30,.5);
 }
+.stats-two-col { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:4px; }
+.stats-col {
+  background:rgba(0,0,0,.25); border-radius:10px; padding:10px 12px;
+  border:1px solid rgba(200,150,30,.15);
+}
+.stats-col-label {
+  font-size:.56rem; color:rgba(255,255,255,.45); font-family:'DM Mono',monospace;
+  letter-spacing:.1em; text-transform:uppercase; margin-bottom:5px;
+}
+.stats-col-pills { display:flex; flex-direction:column; gap:4px; }
+.stats-pill {
+  font-family:'DM Mono',monospace; font-size:.72rem; font-weight:700;
+  padding:2px 8px; border-radius:12px; white-space:nowrap; color:#fff;
+  display:inline-block; width:fit-content;
+}
+.pill-ngn { background:rgba(200,150,30,.3); border:1px solid rgba(200,150,30,.4); }
+.pill-eur { background:rgba(61,90,115,.4); border:1px solid rgba(61,90,115,.5); }
+.pill-usd { background:rgba(74,124,89,.35); border:1px solid rgba(74,124,89,.45); }
+.pill-gbp { background:rgba(107,61,140,.35); border:1px solid rgba(107,61,140,.45); }
+.pill-other { background:rgba(100,70,30,.35); border:1px solid rgba(100,70,30,.45); }
+.stats-col-count {
+  font-size:.6rem; color:rgba(255,255,255,.3); font-family:'DM Mono',monospace; margin-top:4px;
+}
+.stats-col-month-hdr { display:flex; align-items:center; gap:5px; margin-bottom:5px; }
+.mini-sel {
+  background:rgba(0,0,0,.3); border:1px solid rgba(200,150,30,.3);
+  border-radius:4px; color:#c8961e; font-family:'DM Mono',monospace;
+  font-size:.6rem; padding:2px 4px; outline:none; cursor:pointer;
+}
 
-
-/* Month Calendar */
-.month-cal-wrap { margin:0 12px 6px; background:rgba(30,18,6,.6); border-radius:14px; padding:12px; border:1px solid rgba(200,150,30,.2); }
-.month-cal-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
-.cal-nav-btn { background:rgba(200,150,30,.15); border:1px solid rgba(200,150,30,.3); border-radius:8px; color:var(--gold2); cursor:pointer; padding:5px 14px; font-size:1rem; font-weight:700; transition:all .15s; }
-.cal-nav-btn:active { background:rgba(200,150,30,.35); transform:scale(.95); }
-.cal-year { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--gold2); }
+/* MONTH CALENDAR */
+.section-title {
+  font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  color:#e8b84b; font-family:'DM Mono',monospace; padding:16px 16px 10px;
+}
+.month-cal-wrap {
+  margin:0 12px 6px; background:rgba(30,18,6,.6); border-radius:14px;
+  padding:12px; border:1px solid rgba(200,150,30,.2);
+}
+.month-cal-header {
+  display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;
+}
+.cal-nav-btn {
+  background:rgba(200,150,30,.15); border:1px solid rgba(200,150,30,.3);
+  border-radius:8px; color:#e8b84b; cursor:pointer; padding:5px 14px;
+  font-size:1rem; font-weight:700;
+}
+.cal-year { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:#e8b84b; }
 .month-cal-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:7px; }
-.cal-month-btn { background:rgba(0,0,0,.3); border:1px solid rgba(200,150,30,.15); border-radius:9px; color:rgba(255,255,255,.6); cursor:pointer; padding:8px 4px; font-size:.68rem; font-weight:700; font-family:'DM Mono',monospace; letter-spacing:.05em; transition:all .15s; text-align:center; -webkit-tap-highlight-color:transparent; }
-.cal-month-btn:active { transform:scale(.93); }
-.cal-month-btn.has-data { border-color:rgba(200,150,30,.4); color:var(--gold); }
-.cal-month-btn.selected { background:linear-gradient(135deg,rgba(200,150,30,.4),rgba(160,100,20,.5)); border-color:var(--gold2); color:#fff; box-shadow:0 2px 10px rgba(200,150,30,.3); }
+.cal-month-btn {
+  background:rgba(0,0,0,.3); border:1px solid rgba(200,150,30,.15);
+  border-radius:9px; color:rgba(255,255,255,.55); cursor:pointer;
+  padding:8px 4px; font-size:.68rem; font-weight:700;
+  font-family:'DM Mono',monospace; text-align:center;
+  -webkit-tap-highlight-color:transparent;
+}
+.cal-month-btn.has-data { border-color:rgba(200,150,30,.45); color:#c8961e; }
+.cal-month-btn.selected {
+  background:linear-gradient(135deg,rgba(200,150,30,.4),rgba(160,100,20,.5));
+  border-color:#e8b84b; color:#fff;
+  box-shadow:0 2px 10px rgba(200,150,30,.3);
+}
 
+/* ICON GRID */
+.icon-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:10px; padding:0 12px 4px;
+}
+@media(min-width:700px){ .icon-grid { grid-template-columns:repeat(6,1fr); } }
+@media(min-width:1100px){ .icon-grid { grid-template-columns:repeat(8,1fr); } }
+.icon-card {
+  display:flex; flex-direction:column; align-items:center;
+  gap:6px; cursor:pointer; -webkit-tap-highlight-color:transparent;
+}
+.icon-card-inner {
+  width:58px; height:58px; border-radius:16px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.5rem; transition:all .15s;
+  box-shadow:0 4px 12px rgba(0,0,0,.3);
+  border:1px solid rgba(255,255,255,.06);
+}
+.icon-card:active .icon-card-inner { transform:scale(.9); }
+.icon-card-label {
+  font-size:.65rem; font-weight:700; color:#e8c87a;
+  text-align:center; font-family:'DM Sans',sans-serif;
+}
+.app-version-footer {
+  text-align:center; font-size:.65rem; color:#4a3520;
+  font-family:'DM Mono',monospace; padding:16px 0 4px;
+}
 
-/* Black readable text in module panels */
-#module-content .panel { color:#1a0f05 !important; }
-#module-content .card { color:#1a0f05 !important; }
-#module-content table { color:#1a0f05 !important; }
-#module-content td, #module-content th { color:#1a0f05 !important; }
-#module-content .led-desc, #module-content .led-date { color:#1a0f05 !important; }
-#module-content [style*="color:var(--ink)"] { color:#1a0f05 !important; }
-#module-content [style*="color:#1a1410"] { color:#1a0f05 !important; }
-#module-content .insight-val, #module-content .insight-label { color:#1a0f05 !important; }
-#module-content .section-title { color:#1a0f05 !important; font-family:'Playfair Display',serif !important; font-size:1.1rem !important; letter-spacing:0 !important; text-transform:none !important; }
-/* Dashboard specific */
-#module-content #panel-dashboard .card * { color:#1a0f05 !important; }
-#module-content #panel-ledger .led-row td { color:#1a0f05 !important; }
-#module-content #panel-ledger .led-desc { color:#1a0f05 !important; font-weight:600; }
-
-/* Nav arrow buttons in module topbar */
-.nav-arrow-btn { background:rgba(200,150,30,.15); border:1px solid rgba(200,150,30,.3); border-radius:8px; color:var(--gold2); cursor:pointer; padding:6px 14px; font-size:1rem; font-weight:700; transition:all .15s; line-height:1; }
-.nav-arrow-btn:active { background:rgba(200,150,30,.3); transform:scale(.95); }
+/* MODULE SCREEN */
+#screen-module { display:flex; flex-direction:column; }
+#module-topbar {
+  display:none; align-items:center; justify-content:space-between;
+  background:#1a0f05; padding:10px 14px;
+  border-bottom:2px solid rgba(200,150,30,.25); flex-shrink:0;
+}
+.module-back {
+  background:none; border:1px solid rgba(200,150,30,.35); border-radius:8px;
+  color:#c8961e; cursor:pointer; padding:6px 12px; font-size:.82rem; font-weight:600;
+  font-family:'DM Sans',sans-serif;
+}
+.nav-arrow-btn {
+  background:rgba(200,150,30,.15); border:1px solid rgba(200,150,30,.3);
+  border-radius:8px; color:#e8b84b; cursor:pointer;
+  padding:6px 14px; font-size:1rem; font-weight:700;
+}
 .nav-arrow-btn:disabled { opacity:.3; cursor:default; }
-
-/* Text readability in modules */
-#module-content .section-title { color:#1a0f05 !important; font-family:'Playfair Display',serif !important; font-size:1.1rem !important; letter-spacing:0 !important; text-transform:none !important; text-shadow:none !important; }
-#module-content h2, #module-content h3 { color:#1a0f05 !important; }
-#module-content p, #module-content label, #module-content span:not(.hdr-pill) { color:#2a1a08; }
-#module-content .card { box-shadow:0 2px 12px rgba(26,15,5,.1) !important; }
-
-/* White pill text in stats card */
-#app-alltime-pills .app-pill, #app-month-pills .app-pill { color:#fff !important; font-weight:700; }
-
-/* Ensure original panels look good inside module content */
-#module-content header, #module-content #main-header { display:none !important; }
-#module-content main { padding:16px !important; }
-
-/* Hide home panel from module content (it's shown on home screen) */
+.module-title {
+  font-size:.9rem; font-weight:700; color:#e8b84b;
+  font-family:'Playfair Display',serif; min-width:120px; text-align:center;
+}
+#module-content {
+  flex:1; overflow-y:auto; overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+}
+#module-content::-webkit-scrollbar { width:3px; }
+#module-content::-webkit-scrollbar-thumb { background:rgba(200,150,30,.3); border-radius:2px; }
+#module-content main { padding-top:0 !important; max-width:100% !important; background:var(--paper) !important; min-height:100%; }
+#module-content .panel { background:var(--paper) !important; }
+#module-content .section-title { color:#1a0f05 !important; font-family:'Playfair Display',serif !important; font-size:1.1rem !important; letter-spacing:0 !important; text-transform:none !important; }
+#module-content .panel { color:#1a0f05 !important; }
+#module-content .card * { color:#1a0f05; }
+#module-content td, #module-content th { color:#1a0f05 !important; }
+#module-content header { display:none !important; }
 #module-content #panel-home { display:none !important; }
+
+/* BOTTOM NAV */
+#app-bottom-nav {
+  position:fixed; bottom:0; left:0; right:0; z-index:200;
+  background:#1a0f05; border-top:1px solid rgba(200,150,30,.2);
+  display:flex; padding:6px 0;
+  padding-bottom:max(6px,env(safe-area-inset-bottom,6px));
+  box-shadow:0 -4px 20px rgba(0,0,0,.4);
+}
+.bnav-btn {
+  flex:1; display:flex; flex-direction:column; align-items:center;
+  gap:3px; background:none; border:none; cursor:pointer; padding:4px 0;
+  -webkit-tap-highlight-color:transparent;
+}
+.bnav-icon { font-size:1.2rem; line-height:1; }
+.bnav-label { font-size:.58rem; font-weight:600; color:#6a5030; font-family:'DM Sans',sans-serif; }
+.bnav-btn.active .bnav-label { color:#e8b84b; }
+
+/* LANDSCAPE */
+@media(orientation:landscape) and (max-height:500px){
+  .month-cal-grid { grid-template-columns:repeat(6,1fr); gap:5px; }
+  .icon-grid { grid-template-columns:repeat(6,1fr); }
+  #app-topbar { padding:6px 14px; }
+  .stats-card { padding:10px 12px 8px; }
+}
 
 </style>
 </head>
 <body>
 
-<!-- ????????????????????????????????????????????????????????
-     MY EXPENSE LEDGER ? PalmPay-inspired Gold/Brown Theme
-     ???????????????????????????????????????????????????????? -->
-
-<!-- HIDDEN COMPAT ELEMENTS (needed by JS) -->
+<!-- HIDDEN COMPAT — keeps all JS working -->
 <div style="display:none">
   <div id="sticky-topbar"></div>
   <div id="fixed-topbar"></div>
   <div id="hdr-user-bar">
     <div id="hdr-user-bar-name"></div>
-    <div id="hdr-referral-btn"></div>
+    <button id="hdr-referral-btn" onclick="openReferralPanel()"></button>
     <span id="hdr-user-bar-dot"></span>
     <span id="hdr-user-bar-status"></span>
     <div id="hdr-user-bar-btns"></div>
@@ -2039,19 +2040,15 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
           <div id="hdr-filter-pills"></div>
         </div>
       </div>
-      <div style="display:none">
-        <span id="sync-dot"></span><span id="sync-label"></span>
-        <span id="hdr-entries"></span><span id="hdr-total-eur"></span>
-        <span id="hdr-total-ngn"></span><span id="sync-user-display"></span>
-      </div>
+      <span id="sync-dot"></span><span id="sync-label"></span>
+      <span id="hdr-entries"></span><span id="hdr-total-eur"></span>
+      <span id="hdr-total-ngn"></span><span id="sync-user-display"></span>
     </header>
   </div>
-  <div id="guest-banner">
-    <button onclick="showGuestUpgradePrompt()">UPGRADE</button>
-  </div>
+  <div id="guest-banner"><button onclick="showGuestUpgradePrompt()">UPGRADE</button></div>
 </div>
 
-<!-- REAL NAV (hidden ? used by switchTab JS) -->
+<!-- HIDDEN NAV — keeps switchTab working -->
 <nav class="tabs" id="main-nav" style="display:none!important">
   <button onclick="switchTab('home',this)" id="nav-home-btn" class="active"></button>
   <button onclick="switchTab('import',this)"></button>
@@ -2071,14 +2068,14 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
   <button onclick="switchIncomeTab('inc-manage',this)"></button>
 </nav>
 
-<!-- ???? MAIN APP SHELL ???? -->
+<!-- APP SHELL -->
 <div id="app-shell">
 
-  <!-- ?? FIXED TOP BAR ?? -->
+  <!-- TOP BAR -->
   <div id="app-topbar">
     <div class="topbar-left">
       <div id="app-avatar" onclick="goPanel('manage')" title="Profile">&#128522;</div>
-      <div class="topbar-user">
+      <div>
         <div id="app-username">Hi, there!</div>
         <div class="topbar-sync">
           <span id="app-sync-dot"></span>
@@ -2088,67 +2085,63 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
     </div>
     <div class="topbar-right">
       <button class="topbar-btn" onclick="openHelp()" title="Help">&#10067;</button>
-      <button class="topbar-btn" id="card-eye-btn" onclick="toggleStatsCard()" title="Hide/Show card">&#128065;</button>
+      <button class="topbar-btn" id="card-eye-btn" onclick="toggleStatsCard()" title="Hide/show card">&#128065;</button>
       <button class="topbar-btn" onclick="openDateLookup()" title="Date lookup">&#128467;</button>
-      <button class="topbar-btn" onclick="showPinScreen();showLoginStep();" title="Lock">&#128275;</button>
+      <button class="topbar-btn" onclick="showPinScreen&&showPinScreen();showLoginStep&&showLoginStep();" title="Lock">&#128275;</button>
       <button class="topbar-btn" id="app-theme-btn" onclick="toggleAppTheme()" title="Theme">&#127769;</button>
     </div>
   </div>
 
-  <!-- ?? SCROLLABLE CONTENT ?? -->
+  <!-- MODULE TOP BAR (shown when inside a module) -->
+  <div id="module-topbar">
+    <button onclick="backToHome()" class="module-back">&#8962; Home</button>
+    <div style="display:flex;align-items:center;gap:8px;flex:1;justify-content:center">
+      <button onclick="navPrev()" id="nav-prev-btn" class="nav-arrow-btn">&#8592;</button>
+      <div id="module-title" class="module-title">Module</div>
+      <button onclick="navNext()" id="nav-next-btn" class="nav-arrow-btn">&#8594;</button>
+    </div>
+    <div style="width:70px"></div>
+  </div>
+
+  <!-- SCROLLABLE CONTENT -->
   <div id="app-content">
 
-    <!-- ???? HOME SCREEN ???? -->
-    <div id="screen-home" class="app-screen active">
+    <!-- HOME SCREEN -->
+    <div id="screen-home" style="padding:0 0 16px">
 
-      <!-- BALANCE / STATS CARD -->
-      <div class="stats-card">
+      <!-- STATS CARD -->
+      <div class="stats-card" id="stats-card-wrap">
         <div class="stats-card-bg"></div>
-
-        <!-- Toggle: Expenses / Income -->
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-          <div style="display:flex;background:rgba(0,0,0,.4);border-radius:20px;padding:3px;gap:2px;border:1px solid rgba(200,150,30,.25)">
+        <div class="stg-row">
+          <div class="stg-toggle">
             <button onclick="statsSetMode('expenses')" id="stg-exp" class="stg-btn active">&#128184; Expenses</button>
             <button onclick="statsSetMode('income')" id="stg-inc" class="stg-btn">&#128176; Income</button>
           </div>
-          <div id="stats-mode-label" style="font-size:.58rem;color:rgba(255,255,255,.4);font-family:DM Mono,monospace;letter-spacing:.05em"></div>
+          <div id="stats-mode-label" style="font-size:.58rem;color:rgba(255,255,255,.4);font-family:DM Mono,monospace">Expense data</div>
         </div>
-
-        <!-- Two columns: ALL TIME | SELECTED MONTH -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px">
-          <!-- All Time -->
-          <div style="background:rgba(0,0,0,.25);border-radius:10px;padding:10px 12px;border:1px solid rgba(200,150,30,.15)">
-            <div class="pills-label" style="margin-bottom:6px;color:rgba(255,255,255,.5)">All Time</div>
-            <div id="app-alltime-pills" style="display:flex;flex-direction:column;gap:4px">
-              <span style="color:#fff;font-family:DM Mono,monospace;font-size:.7rem">Loading...</span>
+        <div class="stats-two-col">
+          <div class="stats-col">
+            <div class="stats-col-label">All Time</div>
+            <div id="stats-alltime-pills" class="stats-col-pills">
+              <span style="color:rgba(255,255,255,.35);font-size:.7rem">Loading...</span>
             </div>
-            <div style="margin-top:6px;font-family:DM Mono,monospace;font-size:.6rem;color:rgba(255,255,255,.3)">
-              <span id="app-total-entries">--</span> entries
-            </div>
+            <div class="stats-col-count"><span id="stats-alltime-count">0</span> entries</div>
           </div>
-          <!-- Month (driven by calendar below) -->
-          <div style="background:rgba(0,0,0,.25);border-radius:10px;padding:10px 12px;border:1px solid rgba(200,150,30,.15)">
-            <div class="pills-label" style="margin-bottom:6px;color:rgba(255,255,255,.5)" id="card-month-label">This Month</div>
-            <div id="app-month-pills" style="display:flex;flex-direction:column;gap:4px">
-              <span style="color:#fff;font-family:DM Mono,monospace;font-size:.7rem">--</span>
+          <div class="stats-col">
+            <div class="stats-col-month-hdr">
+              <div class="stats-col-label" style="margin-bottom:0" id="stats-month-label">Month</div>
+              <select id="hdr-filter-year-v" onchange="syncMonthStats()" class="mini-sel"></select>
+              <select id="hdr-filter-month-v" onchange="syncMonthStats()" class="mini-sel"></select>
             </div>
-            <div style="margin-top:6px;font-family:DM Mono,monospace;font-size:.6rem;color:rgba(255,255,255,.3)">
-              <span id="app-month-count">--</span> entries
+            <div id="stats-month-pills" class="stats-col-pills">
+              <span style="color:rgba(255,255,255,.35);font-size:.7rem">--</span>
             </div>
+            <div class="stats-col-count"><span id="stats-month-count">0</span> entries</div>
           </div>
-        </div>
-
-        <!-- Hidden selectors for compat -->
-        <div style="display:none">
-          <select id="hdr-filter-year-v" onchange="syncMonthPills()"></select>
-          <select id="hdr-filter-month-v" onchange="syncMonthPills()"></select>
-          <div id="app-exp-count"></div>
-          <div id="app-inc-count"></div>
-          <div id="stats-mini-both"></div>
         </div>
       </div>
 
-      <!-- MONTH CALENDAR SECTION -->
+      <!-- MONTH CALENDAR -->
       <div class="section-title">&#128197; Select Month</div>
       <div class="month-cal-wrap">
         <div class="month-cal-header">
@@ -2156,12 +2149,10 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
           <span id="cal-year-label" class="cal-year">2026</span>
           <button onclick="calNextYear()" class="cal-nav-btn">&#8594;</button>
         </div>
-        <div class="month-cal-grid" id="month-cal-grid">
-          <!-- filled by JS -->
-        </div>
+        <div class="month-cal-grid" id="month-cal-grid"></div>
       </div>
 
-      <!-- EXPENSES SECTION -->
+      <!-- EXPENSES -->
       <div class="section-title">&#128184; Expenses</div>
       <div class="icon-grid">
         <div class="icon-card" onclick="goPanel('import')">
@@ -2190,7 +2181,7 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
         </div>
       </div>
 
-      <!-- INCOME SECTION -->
+      <!-- INCOME -->
       <div class="section-title">&#128176; Income</div>
       <div class="icon-grid">
         <div class="icon-card" onclick="goIncomePanel('inc-import')">
@@ -2219,7 +2210,7 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
         </div>
       </div>
 
-      <!-- ACCOUNT SECTION -->
+      <!-- ACCOUNT -->
       <div class="section-title">&#128100; Account</div>
       <div class="icon-grid">
         <div class="icon-card" onclick="goPanel('manage')">
@@ -2236,25 +2227,12 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
         </div>
       </div>
 
-      <div class="app-version-footer">
-        My Expense Ledger &nbsp;&middot;&nbsp; v<span id="app-ver">2.4.6</span>
-      </div>
+      <div class="app-version-footer">My Expense Ledger &nbsp;&middot;&nbsp; v<span id="app-ver">2.5.5</span></div>
 
     </div><!-- end screen-home -->
 
-    <!-- ???? MODULE SCREEN (all non-home panels go here) ???? -->
-    <div id="screen-module" class="app-screen" style="display:none">
-      <!-- Module top bar -->
-      <div id="module-topbar">
-        <button onclick="backToHome()" class="module-back">&#8962; Home</button>
-        <div style="display:flex;align-items:center;gap:8px;flex:1;justify-content:center">
-          <button onclick="navPrev()" id="nav-prev-btn" class="nav-arrow-btn">&#8592;</button>
-          <div id="module-title" class="module-title" style="min-width:120px;text-align:center">Module</div>
-          <button onclick="navNext()" id="nav-next-btn" class="nav-arrow-btn">&#8594;</button>
-        </div>
-        <div style="width:70px"></div>
-      </div>
-      <!-- Module content area ? panels render here -->
+    <!-- MODULE SCREEN -->
+    <div id="screen-module" style="display:none;flex-direction:column">
       <div id="module-content">
         <main>
 
@@ -3416,33 +3394,29 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
 </div>
 </div><!-- end income-main -->
 
+
         </main>
       </div>
-    </div><!-- end screen-module -->
+    </div>
 
   </div><!-- end app-content -->
 
-  <!-- ?? BOTTOM NAV ?? -->
+  <!-- BOTTOM NAV -->
   <nav id="app-bottom-nav">
     <button class="bnav-btn active" onclick="showHomeScreen()" id="bnav-home">
-      <span class="bnav-icon">&#127968;</span>
-      <span class="bnav-label">Home</span>
+      <span class="bnav-icon">&#127968;</span><span class="bnav-label">Home</span>
     </button>
     <button class="bnav-btn" onclick="goPanel('import')" id="bnav-import">
-      <span class="bnav-icon">&#128184;</span>
-      <span class="bnav-label">Expenses</span>
+      <span class="bnav-icon">&#128184;</span><span class="bnav-label">Expenses</span>
     </button>
     <button class="bnav-btn" onclick="goIncomePanel('inc-import')" id="bnav-income">
-      <span class="bnav-icon">&#128176;</span>
-      <span class="bnav-label">Income</span>
+      <span class="bnav-icon">&#128176;</span><span class="bnav-label">Income</span>
     </button>
     <button class="bnav-btn" onclick="goPanel('dashboard')" id="bnav-dash">
-      <span class="bnav-icon">&#128200;</span>
-      <span class="bnav-label">Charts</span>
+      <span class="bnav-icon">&#128200;</span><span class="bnav-label">Charts</span>
     </button>
     <button class="bnav-btn" onclick="goPanel('manage')" id="bnav-manage">
-      <span class="bnav-icon">&#128100;</span>
-      <span class="bnav-label">Me</span>
+      <span class="bnav-icon">&#128100;</span><span class="bnav-label">Me</span>
     </button>
   </nav>
 
@@ -4014,7 +3988,7 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
       <p style="margin-bottom:14px;">My Expense Ledger was designed and built by <strong>John-de-Scholar</strong> (John Damilola Sunday). By using this app you accept that the developer name appears on the login screen, Help panel, and printed reports.</p>
 
       <p style="font-weight:700;margin-bottom:6px;">22. Last Updated</p>
-      <p style="margin-bottom:14px;">This Privacy Policy and Terms of Service were last updated on <strong>29 March 2026</strong> (v2.5.3). We reserve the right to update these terms. All users will be required to re-accept updated terms upon next login.</p>
+      <p style="margin-bottom:14px;">This Privacy Policy and Terms of Service were last updated on <strong>25 March 2026</strong> (v2.4.0). We reserve the right to update these terms. All users will be required to re-accept updated terms upon next login.</p>
 
       <p style="font-weight:700;margin-bottom:6px;">23. Contact</p>
       <p style="margin-bottom:0;">Questions about your data or these terms? Contact us at myfinanceledgerapp [at] gmail.com. We aim to respond within 48 hours.</p>
@@ -4033,7 +4007,7 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
     <p style="font-weight:700;margin-bottom:6px;">1. Your Data &amp; Privacy</p><p style="margin-bottom:12px;">All financial data you enter is stored in your personal Firebase account under a unique private ID. It is completely private. No other user can access your data.</p>
     <p style="font-weight:700;margin-bottom:6px;">2. Data Storage</p><p style="margin-bottom:12px;">Your data is stored in Google Firebase Firestore. We do not sell, share, or transfer your data to any third party.</p>
     <p style="font-weight:700;margin-bottom:6px;">3. Authentication &amp; PIN Security</p><p style="margin-bottom:12px;">Your PIN is hashed and never stored in plain text. A periodic full identity check is triggered every 1–2 weeks.</p>
-    <p style="font-weight:700;margin-bottom:6px;">4. Session Security &amp; Auto-Lock</p><p style="margin-bottom:12px;">The app locks after 10 minutes of inactivity. Navigate between modules using the icon grid on the home screen or the bottom navigation bar.</p>
+    <p style="font-weight:700;margin-bottom:6px;">4. Session Security &amp; Auto-Lock</p><p style="margin-bottom:12px;">The app locks after 10 minutes of inactivity.</p>
     <p style="font-weight:700;margin-bottom:6px;">5. Usage Analytics</p><p style="margin-bottom:12px;">Anonymous usage statistics via Google Analytics. No financial data is shared.</p>
     <p style="font-weight:700;margin-bottom:6px;">6. No Advertising</p><p style="margin-bottom:12px;">No advertisements. Your data is never used for marketing.</p>
     <p style="font-weight:700;margin-bottom:6px;">7. Developer &amp; Branding</p><p style="margin-bottom:12px;">Built by John-de-Scholar (John Damilola Sunday). Developer name appears on login screen, Help, and reports.</p>
@@ -4043,7 +4017,7 @@ body { background:#0f0a04 !important; color:#e8d5b0; font-family:'DM Sans',sans-
     <p style="font-weight:700;margin-bottom:6px;">11. Right to Data Export</p><p style="margin-bottom:12px;">Export your data anytime via PDF Report (Dashboard) or Monthly Report (Income). Full CSV export coming in a future update.</p>
     <p style="font-weight:700;margin-bottom:6px;">12. Age Restriction</p><p style="margin-bottom:12px;">You must be at least 16 years old to use this app. By registering you confirm you meet this requirement.</p>
     <p style="font-weight:700;margin-bottom:6px;">13. Local Storage</p><p style="margin-bottom:12px;">This app uses device local storage (similar to cookies) to remember your session and preferences. No tracking cookies are used.</p>
-    <p style="font-weight:700;margin-bottom:6px;">14. Governing Law</p><p style="margin-bottom:12px;">Governed by Nigerian law (NDPR) and GDPR where applicable. Last updated: 29 March 2026 (v2.5.3).</p>
+    <p style="font-weight:700;margin-bottom:6px;">14. Governing Law</p><p style="margin-bottom:12px;">Governed by Nigerian law (NDPR) and GDPR where applicable. Last updated: 23 March 2026 (v2.3.0).</p>
     <p style="font-weight:700;margin-bottom:6px;">15. Contact</p><p>myfinanceledgerapp [at] gmail.com</p>
   </div>
 </div>
@@ -15401,7 +15375,7 @@ var PRIVACY_VER  = '2026-03-25'; // bump to force all users to re-sign privacy
 // Set FORCE_UPDATE_AFTER to a version string to block users on older versions.
 // Leave as '' to never force. Example: '2.5.0' forces anyone below that to update.
 var FORCE_UPDATE_AFTER = '';
-var TOUR_VER     = '2026-03-29'; // bump ONLY when new slides are added to the tour
+var TOUR_VER     = '2026-03-23'; // bump ONLY when new slides are added to the tour
 // ── THEME TOGGLE ──────────────────────────────────────────────────
 var _THEME_KEY = 'mel_app_theme';
 function toggleAppTheme() {
@@ -15432,7 +15406,7 @@ function toggleAppTheme() {
   }
 })();
 
-var APP_VERSION  = '2.5.3';
+var APP_VERSION  = '2.5.5';
 // Dynamically update all version displays
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('#app-version-display').forEach(function(el) {
@@ -16433,7 +16407,7 @@ function openUserManual() {
     out += '<div style="padding:10px;background:var(--paper2);border-radius:6px;border:1px solid var(--border);text-align:center;"><div style="font-size:1.4rem;">'+icon+'</div><div style="'+S+'font-size:0.62rem;'+MUTED+'margin-top:4px;">'+label+'</div></div>';
   });
   out += '</div>';
-  out += note('The app has <strong>two independent modules</strong>: Expenses and Income. Both are accessible from the <strong>Home screen icon grid</strong>. Tap any icon to open that module. Use the <strong>? ?</strong> arrows in the module bar to move between sections. Switch between them with the 🔁 button in the top header. All tabs, charts and data are completely separate between modules.');
+  out += note('The app has <strong>two independent modules</strong>: Expenses and Income. Switch between them with the 🔁 button in the top header. All tabs, charts and data are completely separate between modules.');
 
   // ── Quick Start ─────────────────────────────────────────────────────────
   out += h2('Quick Start — 3 Steps');
@@ -17613,7 +17587,7 @@ var TOUR_EXPENSES_STEPS = [
     arrow:null },
 
   // -- IMPORT --
-  { target:'.icon-card:nth-child(1)', tab:'import', icon:'📥', title:'Import — Add Your Expenses',
+  { target:'#main-nav button:nth-child(1)', tab:'import', icon:'📥', title:'Import — Add Your Expenses',
     body:'This is where everything starts. Tap <strong>Import</strong> to open the notepad and paste or type your expense entries.',
     arrow:'up' },
   { target:'#raw-input', tab:'import', icon:'✍️', title:'The Notepad — Type Your Entries',
@@ -17624,7 +17598,7 @@ var TOUR_EXPENSES_STEPS = [
     arrow:'up' },
 
   // -- CATEGORIZE --
-  { target:'.icon-card:nth-child(2)', tab:'categorize', icon:'🏷️', title:'Categorize — Sort Your Spending',
+  { target:'#main-nav button:nth-child(2)', tab:'categorize', icon:'🏷️', title:'Categorize — Sort Your Spending',
     body:'Every parsed entry appears here with a category dropdown. The app auto-suggests based on your history.',
     arrow:'up' },
   { target:'#cat-selall-btn', tab:'categorize', icon:'☐', title:'Categorize — Checkbox Actions',
@@ -17638,7 +17612,7 @@ var TOUR_EXPENSES_STEPS = [
     arrow:'up' },
 
   // -- LEDGER --
-  { target:'.icon-card:nth-child(5)', tab:'ledger', icon:'📋', title:'Ledger — Your Complete Record',
+  { target:'#main-nav button:nth-child(5)', tab:'ledger', icon:'📋', title:'Ledger — Your Complete Record',
     body:'Every saved entry lives here. Use the <strong>▼ Filters</strong> button to expand Year, Month, Currency and Category filters.',
     arrow:'up' },
   { target:'#led-selall-btn', tab:'ledger', icon:'☐', title:'Ledger — Checkbox Bulk Actions',
@@ -17649,20 +17623,20 @@ var TOUR_EXPENSES_STEPS = [
     arrow:'down' },
 
   // -- DAILY / DASHBOARD --
-  { target:'.icon-card:nth-child(3)', tab:'daily', icon:'📅', title:'Daily View — See Any Day',
+  { target:'#main-nav button:nth-child(3)', tab:'daily', icon:'📅', title:'Daily View — See Any Day',
     body:'Full spending breakdown for any date. Use the date picker to jump instantly.',
     arrow:'up' },
-  { target:'.icon-card:nth-child(4)', tab:'dashboard', icon:'📊', title:'Dashboard — Charts & Totals',
+  { target:'#main-nav button:nth-child(4)', tab:'dashboard', icon:'📊', title:'Dashboard — Charts & Totals',
     body:'Visual charts: <strong>Category Breakdown</strong> shows each category\'s % share of total spending. Monthly trend, heatmap and year-over-year growth included.',
     arrow:'up' },
 
   // -- BUDGET --
-  { target:'.icon-card:nth-child(6)', tab:'budget', icon:'🎯', title:'Budget — Set Monthly Limits',
+  { target:'#main-nav button:nth-child(6)', tab:'budget', icon:'🎯', title:'Budget — Set Monthly Limits',
     body:'Set a spending limit per category. Progress bars turn amber at 75% and red when exceeded. Each category gets its own unique colour.',
     arrow:'up' },
 
   // -- MANAGE / RECYCLE BIN --
-  { target:'.icon-card:nth-child(7)', tab:'manage', icon:'⚙️', title:'Manage — Your Control Centre',
+  { target:'#main-nav button:nth-child(7)', tab:'manage', icon:'⚙️', title:'Manage — Your Control Centre',
     body:'Profile, PIN change, data deletion, deleted items, currencies, CSV export — all here.',
     arrow:'up' },
   { target:'#avatar-circle', tab:'manage', icon:'😊', title:'Your Avatar — Tap to Personalise',
@@ -17693,7 +17667,7 @@ var TOUR_INCOME_STEPS = [
     arrow:null },
 
   // -- IMPORT --
-  { target:null, tab:'inc-import', icon:'📥', title:'Income Import Tab',
+  { target:'#income-nav button:nth-child(1)', tab:'inc-import', icon:'📥', title:'Income Import Tab',
     body:'Tap <strong>Import</strong> to open the income notepad. Toggle between <strong>Month mode</strong> and <strong>Year mode</strong> (paste a full year at once).',
     arrow:'up' },
   { target:'#inc-raw-input', tab:'inc-import', icon:'✍️', title:'Income Notepad — Type Earnings',
@@ -17704,7 +17678,7 @@ var TOUR_INCOME_STEPS = [
     arrow:'up' },
 
   // -- CATEGORIZE --
-  { target:null, tab:'inc-categorize', icon:'🏷️', title:'Income Categorize Tab',
+  { target:'#income-nav button:nth-child(2)', tab:'inc-categorize', icon:'🏷️', title:'Income Categorize Tab',
     body:'Every parsed income entry appears here. Use the <strong>▼ Filters</strong> to filter by Period, Currency and Category before assigning.',
     arrow:'up' },
   { target:'#inc-cat-selall-btn', tab:'inc-categorize', icon:'☐', title:'Income Categorize — Checkbox Actions',
@@ -17718,7 +17692,7 @@ var TOUR_INCOME_STEPS = [
     arrow:'up' },
 
   // -- LEDGER --
-  { target:null, tab:'inc-ledger', icon:'📋', title:'Income Ledger',
+  { target:'#income-nav button:nth-child(5)', tab:'inc-ledger', icon:'📋', title:'Income Ledger',
     body:'All income entries in one place. Tap <strong>▼ Filters</strong> to expand Year, Month, Currency and Category filters.',
     arrow:'up' },
   { target:'#inc-led-selall-btn', tab:'inc-ledger', icon:'☐', title:'Income Ledger — Checkbox Bulk Actions',
@@ -17729,10 +17703,10 @@ var TOUR_INCOME_STEPS = [
     arrow:'down' },
 
   // -- MONTHLY / DASHBOARD --
-  { target:null, tab:'inc-monthly', icon:'📅', title:'Monthly Income View',
+  { target:'#income-nav button:nth-child(3)', tab:'inc-monthly', icon:'📅', title:'Monthly Income View',
     body:'Month-by-month breakdown of all earnings. Compare months side by side and track trends over time.',
     arrow:'up' },
-  { target:null, tab:'inc-dashboard', icon:'📊', title:'Income Dashboard — Charts',
+  { target:'#income-nav button:nth-child(4)', tab:'inc-dashboard', icon:'📊', title:'Income Dashboard — Charts',
     body:'Income by category with <strong>% share</strong> of total shown next to each bar. Monthly totals, heatmap and year-over-year growth included.',
     arrow:'up' },
 
@@ -18542,278 +18516,6 @@ setTimeout(function() {
   if (savedTab === 'home') renderHomeScreen();
 }, 500);
 
-
-/* ???????????????????????????????????????????????????
-   NEW APP JS ? navigation, home screen, sync
-   ??????????????????????????????????????????????????? */
-
-var _currentPanel = 'home';
-var _currentIncPanel = null;
-
-// Show home screen
-function showHomeScreen() {
-  document.getElementById('app-topbar').style.display = 'flex';
-  document.getElementById('module-topbar').style.display = 'none';
-  document.getElementById('screen-home').style.display = '';
-  document.getElementById('screen-module').style.display = 'none';
-  _currentPanel = 'home';
-  // Update bottom nav
-  document.querySelectorAll('.bnav-btn').forEach(function(b){ b.classList.remove('active'); });
-  document.getElementById('bnav-home').classList.add('active');
-  // Sync home screen data
-  syncHomeScreen();
-  // Tell underlying system we're on "home"
-  if (typeof switchTab === 'function') {
-    var hBtn = document.getElementById('nav-home-btn');
-    switchTab('home', hBtn);
-  }
-}
-
-// Go to an expense panel
-function goPanel(panelName) {
-  _currentIncPanel = null;
-  _currentPanel = panelName;
-  // Activate the panel in the hidden nav system
-  if (typeof switchTab === 'function') switchTab(panelName, null);
-  // Show module screen
-  showModuleScreen(panelName);
-}
-
-// Go to income panel
-function goIncomePanel(panelName) {
-  _currentIncPanel = panelName;
-  _currentPanel = panelName;
-  if (typeof switchIncomeTab === 'function') switchIncomeTab(panelName, null);
-  // Also switch to income mode
-  if (typeof _appMode !== 'undefined') {
-    if (typeof switchMode === 'function') switchMode('income');
-    else if (document.getElementById('income-main')) {
-      document.getElementById('income-main').style.display = '';
-    }
-  }
-  showModuleScreen(panelName);
-}
-
-var MODULE_TITLES = {
-  'import':'Import Expenses','categorize':'Categorize','daily':'Daily View',
-  'dashboard':'Dashboard','ledger':'Ledger','budget':'Budget','manage':'Manage',
-  'inc-import':'Import Income','inc-categorize':'Categorize Income',
-  'inc-monthly':'Monthly Income','inc-dashboard':'Income Dashboard',
-  'inc-ledger':'Income Ledger','inc-manage':'Manage Income'
-};
-
-function showModuleScreen(panelName) {
-  document.getElementById('screen-home').style.display = 'none';
-  document.getElementById('screen-module').style.display = 'flex';
-  // Update topbar title in module mode
-  var title = MODULE_TITLES[panelName] || panelName;
-  document.getElementById('module-title').textContent = title;
-  document.getElementById('app-topbar').style.display = 'none'; // hide main topbar
-  document.getElementById('module-topbar').style.display = 'flex'; // show module bar
-  // Bottom nav highlight
-  document.querySelectorAll('.bnav-btn').forEach(function(b){ b.classList.remove('active'); });
-  if (panelName.indexOf('inc-') === 0) document.getElementById('bnav-income').classList.add('active');
-  else if (panelName === 'import' || panelName === 'categorize') document.getElementById('bnav-import').classList.add('active');
-  else if (panelName === 'dashboard') document.getElementById('bnav-dash').classList.add('active');
-  else if (panelName === 'manage') document.getElementById('bnav-manage').classList.add('active');
-  var mc = document.getElementById('module-content');
-  if (mc) mc.scrollTop = 0;
-}
-
-function backToHome() {
-  document.getElementById('app-topbar').style.display = 'flex';
-  document.getElementById('module-topbar').style.display = 'none';
-  showHomeScreen();
-}
-
-// Sync home screen stats
-function syncHomeScreen() {
-  // Username
-  var nm = document.getElementById('hdr-user-bar-name');
-  var un = document.getElementById('app-username');
-  if (nm && un && nm.textContent.trim()) {
-    un.textContent = 'Hi, ' + nm.textContent.trim() + '!';
-  }
-  // Avatar
-  var av = document.getElementById('app-avatar');
-  if (av) {
-    var uid = (typeof _userId !== 'undefined' && _userId) ? _userId : 'default';
-    var saved = localStorage.getItem('expense_user_avatar_'+uid);
-    if (saved) av.innerHTML = saved;
-  }
-  // Sync dot
-  var dot  = document.getElementById('hdr-user-bar-dot');
-  var adot = document.getElementById('app-sync-dot');
-  if (dot && adot) adot.style.background = dot.style.background || '#555';
-  // Status
-  var sta  = document.getElementById('hdr-user-bar-status');
-  var asta = document.getElementById('app-sync-status');
-  if (sta && asta) asta.textContent = sta.textContent;
-  // Version
-  var ve = document.getElementById('app-ver');
-  if (ve && typeof APP_VERSION !== 'undefined') ve.textContent = APP_VERSION;
-  // Entry counts
-  try {
-    var uid2 = (typeof _userId !== 'undefined' && _userId) ? _userId : 'default';
-    var expL = JSON.parse(localStorage.getItem('expense_ledger_'+uid2)||'[]');
-    var incL = JSON.parse(localStorage.getItem('income_ledger_'+uid2)||'[]');
-    var total = expL.length + incL.length;
-    var te = document.getElementById('app-total-entries');
-    var ec = document.getElementById('app-exp-count');
-    var ic = document.getElementById('app-inc-count');
-    if (te) te.textContent = total.toLocaleString();
-    if (ec) ec.textContent = expL.length.toLocaleString();
-    if (ic) ic.textContent = incL.length.toLocaleString();
-  } catch(e) {}
-  // All-time pills (clone from classic system)
-  syncAllTimePills();
-  // Month pills
-  syncMonthPillsSetup();
-}
-
-function syncAllTimePills() {
-  var src = document.getElementById('hdr-context-pills');
-  var dst = document.getElementById('app-alltime-pills');
-  if (!src || !dst) return;
-  // Get inner HTML and re-style pills
-  var pills = src.querySelectorAll('.hdr-pill');
-  if (pills.length === 0) return;
-  dst.innerHTML = '';
-  pills.forEach(function(p){
-    var sp = document.createElement('span');
-    sp.className = 'app-pill ' + (
-      p.classList.contains('EUR') ? 'app-pill-blue' :
-      p.classList.contains('NGN') ? 'app-pill-gold' :
-      p.classList.contains('USD') ? 'app-pill-green' : 'app-pill-brown'
-    );
-    sp.textContent = p.textContent;
-    dst.appendChild(sp);
-  });
-}
-
-function syncMonthPillsSetup() {
-  // Populate year/month selectors
-  var ySrc = document.getElementById('hdr-filter-year');
-  var mSrc = document.getElementById('hdr-filter-month');
-  var yDst = document.getElementById('hdr-filter-year-v');
-  var mDst = document.getElementById('hdr-filter-month-v');
-  if (!yDst || !mDst) return;
-  // Clone options from classic selectors
-  if (ySrc && ySrc.options.length && yDst.options.length === 0) {
-    Array.from(ySrc.options).forEach(function(o){
-      var no = document.createElement('option');
-      no.value = o.value; no.textContent = o.textContent;
-      if (o.selected) no.selected = true;
-      yDst.appendChild(no);
-    });
-  }
-  if (mSrc && mSrc.options.length && mDst.options.length === 0) {
-    Array.from(mSrc.options).forEach(function(o){
-      var no = document.createElement('option');
-      no.value = o.value; no.textContent = o.textContent;
-      if (o.selected) no.selected = true;
-      mDst.appendChild(no);
-    });
-  }
-  syncMonthPills();
-}
-
-function syncMonthPills() {
-  var yDst = document.getElementById('hdr-filter-year-v');
-  var mDst = document.getElementById('hdr-filter-month-v');
-  // Also sync to classic selectors so their JS runs
-  var ySrc = document.getElementById('hdr-filter-year');
-  var mSrc = document.getElementById('hdr-filter-month');
-  if (ySrc && yDst) ySrc.value = yDst.value;
-  if (mSrc && mDst) mSrc.value = mDst.value;
-  // Trigger classic update
-  if (typeof updateMonthFilterPill === 'function') updateMonthFilterPill();
-  // Now read result
-  setTimeout(function(){
-    var src = document.getElementById('hdr-filter-pills');
-    var dst = document.getElementById('app-month-pills');
-    if (!src || !dst) return;
-    var pills = src.querySelectorAll('.hdr-pill');
-    if (pills.length === 0) { dst.innerHTML = '<span class="app-pill app-pill-brown">No data</span>'; return; }
-    dst.innerHTML = '';
-    pills.forEach(function(p){
-      var sp = document.createElement('span');
-      sp.className = 'app-pill ' + (
-        p.classList.contains('EUR') ? 'app-pill-blue' :
-        p.classList.contains('NGN') ? 'app-pill-gold' :
-        p.classList.contains('USD') ? 'app-pill-green' : 'app-pill-brown'
-      );
-      sp.textContent = p.textContent;
-      dst.appendChild(sp);
-    });
-  }, 300);
-}
-
-// Watch classic header for updates
-setTimeout(function(){
-  if (!window.MutationObserver) return;
-  ['hdr-user-bar-name','hdr-user-bar-dot','hdr-user-bar-status','hdr-context-pills'].forEach(function(id){
-    var el = document.getElementById(id);
-    if (el) new MutationObserver(syncHomeScreen).observe(el,{childList:true,characterData:true,subtree:true,attributes:true});
-  });
-}, 2000);
-
-// Init on load ? start on home screen
-document.addEventListener('DOMContentLoaded', function(){
-  showHomeScreen();
-  // After data loads, sync again
-  setTimeout(syncHomeScreen, 1000);
-  setTimeout(syncHomeScreen, 3000);
-});
-
-
-var _statsMode = 'all';
-function statsSetMode(mode) {
-  _statsMode = mode;
-  document.querySelectorAll('.stg-btn').forEach(function(b){ b.classList.remove('active'); });
-  document.getElementById('stg-'+mode).classList.add('active');
-  var lbl = document.getElementById('stats-mode-label');
-  var countLbl = document.getElementById('stats-count-label');
-  var mExp = document.getElementById('stats-mini-exp');
-  var mInc = document.getElementById('stats-mini-inc');
-  if (mode === 'all') {
-    if (lbl) lbl.textContent = 'All entries';
-    if (countLbl) countLbl.textContent = 'Total Entries';
-    if (mExp) mExp.style.display = '';
-    if (mInc) mInc.style.display = '';
-  } else if (mode === 'expenses') {
-    if (lbl) lbl.textContent = 'Expenses only';
-    if (countLbl) countLbl.textContent = 'Expense Entries';
-    if (mExp) mExp.style.display = 'none';
-    if (mInc) mInc.style.display = 'none';
-  } else {
-    if (lbl) lbl.textContent = 'Income only';
-    if (countLbl) countLbl.textContent = 'Income Entries';
-    if (mExp) mExp.style.display = 'none';
-    if (mInc) mInc.style.display = 'none';
-  }
-  // Update counts
-  try {
-    var uid = (typeof _userId !== 'undefined' && _userId) ? _userId : 'default';
-    var expL = JSON.parse(localStorage.getItem('expense_ledger_'+uid)||'[]');
-    var incL = JSON.parse(localStorage.getItem('income_ledger_'+uid)||'[]');
-    var te = document.getElementById('app-total-entries');
-    var ec = document.getElementById('app-exp-count');
-    var ic = document.getElementById('app-inc-count');
-    if (mode === 'all') {
-      if (te) te.textContent = (expL.length + incL.length).toLocaleString();
-      if (ec) ec.textContent = expL.length.toLocaleString();
-      if (ic) ic.textContent = incL.length.toLocaleString();
-    } else if (mode === 'expenses') {
-      if (te) te.textContent = expL.length.toLocaleString();
-    } else {
-      if (te) te.textContent = incL.length.toLocaleString();
-    }
-    // Update pills too
-    if (mode === 'expenses' || mode === 'all') syncAllTimePills();
-  } catch(e) {}
-}
-
 </script>
 
 <!-- ═══ REGISTRATION VERIFICATION OVERLAY ═══ -->
@@ -18972,25 +18674,23 @@ l>
   </div>
 </div>
 
+
 <script>
-/* ???????????????????????????????????????????????????
-   NEW APP JS v2.5.2 ? clean single block
-   ??????????????????????????????????????????????????? */
+/* ═══════════════════════════════════════════════════
+   MY EXPENSE LEDGER — NEW APP CONTROLLER v2.5.5
+   ═══════════════════════════════════════════════════ */
 
-// ?? Panel lists for arrow navigation ??
-var EXP_PANELS  = ['import','categorize','daily','dashboard','ledger','budget','manage'];
-var INC_PANELS  = ['inc-import','inc-categorize','inc-monthly','inc-dashboard','inc-ledger','inc-manage'];
-var _curPanel   = null;   // current panel name
-var _isIncome   = false;  // expense or income mode
-var _statsMode  = 'expenses'; // which mode stats card shows
+var EXP_PANELS = ['import','categorize','daily','dashboard','ledger','budget','manage'];
+var INC_PANELS = ['inc-import','inc-categorize','inc-monthly','inc-dashboard','inc-ledger','inc-manage'];
+var _curPanel  = null;
+var _isIncome  = false;
+var _statsMode = 'expenses';
+var _calYear   = new Date().getFullYear();
+var _calMonth  = new Date().getMonth() + 1;
+var _cardVis   = true;
+var CAL_MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
 
-// ?? Calendar state ??
-var _calYear    = new Date().getFullYear();
-var _calMonth   = new Date().getMonth() + 1; // 1-12
-var MONTH_NAMES = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
-
-// Module titles
-var MODULE_TITLES = {
+var MOD_TITLES = {
   'import':'Import Expenses','categorize':'Categorize','daily':'Daily View',
   'dashboard':'Dashboard','ledger':'Ledger','budget':'Budget','manage':'Manage',
   'inc-import':'Import Income','inc-categorize':'Categorize Income',
@@ -18998,7 +18698,27 @@ var MODULE_TITLES = {
   'inc-ledger':'Income Ledger','inc-manage':'Manage Income'
 };
 
-// ?? Show home screen ??
+// ── CURRENCY SYMBOLS (safe ASCII escapes) ──
+var CUR_SYMS = {
+  'NGN': '\u20a6',
+  'EUR': '\u20ac',
+  'USD': '$',
+  'GBP': '\u00a3',
+  'GHS': '\u20b5',
+  'KES': 'KSh',
+  'ZAR': 'R'
+};
+
+function getCurSym(code) {
+  return CUR_SYMS[code] || code;
+}
+
+function getPillClass(code) {
+  var m = {'NGN':'pill-ngn','EUR':'pill-eur','USD':'pill-usd','GBP':'pill-gbp'};
+  return m[code] || 'pill-other';
+}
+
+// ── NAVIGATION ──────────────────────────────────────
 function showHomeScreen() {
   document.getElementById('app-topbar').style.display = 'flex';
   document.getElementById('module-topbar').style.display = 'none';
@@ -19006,23 +18726,20 @@ function showHomeScreen() {
   document.getElementById('screen-module').style.display = 'none';
   _curPanel = null;
   document.querySelectorAll('.bnav-btn').forEach(function(b){ b.classList.remove('active'); });
-  document.getElementById('bnav-home').classList.add('active');
+  var hb = document.getElementById('bnav-home');
+  if (hb) hb.classList.add('active');
   if (typeof switchTab === 'function') switchTab('home', document.getElementById('nav-home-btn'));
   syncHomeScreen();
 }
 
-// ?? Go to expense panel ??
 function goPanel(name) {
-  _isIncome = false;
-  _curPanel = name;
+  _isIncome = false; _curPanel = name;
   if (typeof switchTab === 'function') switchTab(name, null);
   _showModule(name);
 }
 
-// ?? Go to income panel ??
 function goIncomePanel(name) {
-  _isIncome = true;
-  _curPanel = name;
+  _isIncome = true; _curPanel = name;
   if (typeof switchIncomeTab === 'function') switchIncomeTab(name, null);
   _showModule(name);
 }
@@ -19031,24 +18748,28 @@ function _showModule(name) {
   document.getElementById('app-topbar').style.display = 'none';
   document.getElementById('module-topbar').style.display = 'flex';
   document.getElementById('screen-home').style.display = 'none';
-  document.getElementById('screen-module').style.display = 'flex';
-  document.getElementById('module-title').textContent = MODULE_TITLES[name] || name;
-  // Update arrows
-  _updateNavArrows();
-  // Bottom nav
+  var ms = document.getElementById('screen-module');
+  ms.style.display = 'flex';
+  var mt = document.getElementById('module-title');
+  if (mt) mt.textContent = MOD_TITLES[name] || name;
+  _updateArrows();
   document.querySelectorAll('.bnav-btn').forEach(function(b){ b.classList.remove('active'); });
-  if (name.indexOf('inc-') === 0)    document.getElementById('bnav-income').classList.add('active');
-  else if (name==='import'||name==='categorize') document.getElementById('bnav-import').classList.add('active');
-  else if (name==='dashboard')       document.getElementById('bnav-dash').classList.add('active');
-  else if (name==='manage')          document.getElementById('bnav-manage').classList.add('active');
+  var map = {
+    'inc-import':'bnav-income','inc-categorize':'bnav-income','inc-monthly':'bnav-income',
+    'inc-dashboard':'bnav-income','inc-ledger':'bnav-income','inc-manage':'bnav-income',
+    'import':'bnav-import','categorize':'bnav-import',
+    'dashboard':'bnav-dash','ledger':'bnav-dash',
+    'manage':'bnav-manage'
+  };
+  var bnav = map[name];
+  if (bnav) { var b = document.getElementById(bnav); if (b) b.classList.add('active'); }
   var mc = document.getElementById('module-content');
   if (mc) mc.scrollTop = 0;
 }
 
 function backToHome() { showHomeScreen(); }
 
-// ?? Arrow navigation ??
-function _updateNavArrows() {
+function _updateArrows() {
   var list = _isIncome ? INC_PANELS : EXP_PANELS;
   var idx  = list.indexOf(_curPanel);
   var prev = document.getElementById('nav-prev-btn');
@@ -19060,205 +18781,347 @@ function _updateNavArrows() {
 function navPrev() {
   var list = _isIncome ? INC_PANELS : EXP_PANELS;
   var idx  = list.indexOf(_curPanel);
-  if (idx > 0) {
-    _isIncome ? goIncomePanel(list[idx-1]) : goPanel(list[idx-1]);
-  }
+  if (idx > 0) { _isIncome ? goIncomePanel(list[idx-1]) : goPanel(list[idx-1]); }
 }
 
 function navNext() {
   var list = _isIncome ? INC_PANELS : EXP_PANELS;
   var idx  = list.indexOf(_curPanel);
-  if (idx < list.length - 1) {
-    _isIncome ? goIncomePanel(list[idx+1]) : goPanel(list[idx+1]);
-  }
+  if (idx < list.length - 1) { _isIncome ? goIncomePanel(list[idx+1]) : goPanel(list[idx+1]); }
 }
 
-// ?? Stats toggle: Expenses / Income ??
+// ── STATS CARD ──────────────────────────────────────
 function statsSetMode(mode) {
   _statsMode = mode;
   document.querySelectorAll('.stg-btn').forEach(function(b){ b.classList.remove('active'); });
-  var activeBtn = document.getElementById('stg-'+mode);
-  if (activeBtn) activeBtn.classList.add('active');
+  var ab = document.getElementById('stg-' + (mode === 'expenses' ? 'exp' : 'inc'));
+  if (ab) ab.classList.add('active');
   var lbl = document.getElementById('stats-mode-label');
   if (lbl) lbl.textContent = mode === 'expenses' ? 'Expense data' : 'Income data';
-  // Re-render stats
-  _renderStats();
+  renderStats();
 }
 
-// ?? Calendar ??
-function _buildCalendar() {
+function toggleStatsCard() {
+  _cardVis = !_cardVis;
+  var c = document.getElementById('stats-card-wrap');
+  var b = document.getElementById('card-eye-btn');
+  if (c) c.style.display = _cardVis ? '' : 'none';
+  if (b) b.innerHTML = _cardVis ? '&#128065;' : '&#128372;';
+}
+
+// ── CALENDAR ────────────────────────────────────────
+function buildCalendar() {
   var grid = document.getElementById('month-cal-grid');
   var lbl  = document.getElementById('cal-year-label');
   if (!grid) return;
   if (lbl) lbl.textContent = _calYear;
-  // Which months have data?
-  var uid  = (typeof _userId!=='undefined'&&_userId)?_userId:'default';
+  var uid  = (typeof _userId !== 'undefined' && _userId) || 'default';
   var data = [];
   try {
-    if (_statsMode==='income') {
-      data = JSON.parse(localStorage.getItem('income_ledger_'+uid)||'[]');
-    } else {
-      data = JSON.parse(localStorage.getItem('expense_ledger')||'[]');
-    }
-  } catch(e){}
+    var key = _statsMode === 'income'
+      ? 'income_ledger_' + uid
+      : 'expense_ledger';
+    data = JSON.parse(localStorage.getItem(key) || '[]');
+  } catch(e) {}
   var hasData = {};
-  data.forEach(function(i){
+  data.forEach(function(i) {
     if (!i.date) return;
-    var p=i.date.split('-');
-    var mo=-1,yr=-1;
-    if(p.length===3&&p[2].length===4){mo=parseInt(p[1]);yr=parseInt(p[2]);}
-    else if(p.length===3&&p[0].length===4){mo=parseInt(p[1]);yr=parseInt(p[0]);}
-    if (yr===_calYear && mo>0) hasData[mo]=true;
+    var p = i.date.split('-');
+    var mo = -1, yr = -1;
+    if (p.length === 3 && p[2].length === 4) { mo = parseInt(p[1]); yr = parseInt(p[2]); }
+    else if (p.length === 3 && p[0].length === 4) { mo = parseInt(p[1]); yr = parseInt(p[0]); }
+    if (yr === _calYear && mo > 0) hasData[mo] = true;
   });
-  grid.innerHTML='';
-  MONTH_NAMES.forEach(function(m,i){
-    var mo=i+1;
-    var btn=document.createElement('button');
-    btn.className='cal-month-btn';
-    btn.textContent=m;
+  grid.innerHTML = '';
+  CAL_MONTHS.forEach(function(m, i) {
+    var mo = i + 1;
+    var btn = document.createElement('button');
+    btn.className = 'cal-month-btn';
+    btn.textContent = m;
     if (hasData[mo]) btn.classList.add('has-data');
-    if (mo===_calMonth && _calYear===new Date().getFullYear()||_calMonth===mo) btn.classList.add('selected');
-    btn.onclick=function(){ _calMonth=mo; _buildCalendar(); _renderMonthStats(); };
+    if (mo === _calMonth) btn.classList.add('selected');
+    btn.onclick = function() { _calMonth = mo; buildCalendar(); syncMonthStats(); };
     grid.appendChild(btn);
   });
 }
 
-function calPrevYear() { _calYear--; _buildCalendar(); _renderMonthStats(); }
-function calNextYear() { _calYear++; _buildCalendar(); _renderMonthStats(); }
+function calPrevYear() { _calYear--; buildCalendar(); syncMonthStats(); }
+function calNextYear() { _calYear++; buildCalendar(); syncMonthStats(); }
 
-// ?? Render all stats ??
-function _renderStats() {
-  var uid  = (typeof _userId!=='undefined'&&_userId)?_userId:'default';
-  var expL = []; var incL = [];
-  try { expL = JSON.parse(localStorage.getItem('expense_ledger')||'[]'); } catch(e){}
-  try { incL = JSON.parse(localStorage.getItem('income_ledger_'+uid)||'[]'); } catch(e){}
-  var data = _statsMode==='income' ? incL : expL;
-
-  // All-time
-  var totals = _calcTotals(data);
-  var atEl = document.getElementById('app-alltime-pills');
-  var teEl = document.getElementById('app-total-entries');
-  if (atEl) {
-    if (totals.length===0) {
-      atEl.innerHTML='<span style="color:rgba(255,255,255,.4);font-size:.7rem;font-family:DM Mono,monospace">No data</span>';
-    } else {
-      atEl.innerHTML = totals.map(function(t){
-        return '<span class="app-pill app-pill-'+(t.code==='NGN'?'gold':t.code==='EUR'?'blue':'green')+'" style="color:#fff">'+t.text+'</span>';
-      }).join('');
-    }
-  }
-  if (teEl) teEl.textContent = data.length.toLocaleString();
-
-  _renderMonthStats();
+// ── STATS RENDERING ─────────────────────────────────
+function calcTotals(arr) {
+  var t = {};
+  arr.forEach(function(i) {
+    var c = i.currency || 'NGN';
+    t[c] = (t[c] || 0) + Math.abs(i.amount || 0);
+  });
+  return Object.keys(t).sort(function(a,b){ return t[b] - t[a]; }).map(function(c) {
+    return {
+      code: c,
+      sym:  getCurSym(c),
+      val:  t[c].toLocaleString(undefined, {maximumFractionDigits:0})
+    };
+  });
 }
 
-function _renderMonthStats() {
-  var uid  = (typeof _userId!=='undefined'&&_userId)?_userId:'default';
+function makePillsHTML(totals) {
+  if (!totals.length) return '<span style="color:rgba(255,255,255,.35);font-size:.7rem">No data</span>';
+  return totals.slice(0, 4).map(function(t) {
+    return '<span class="stats-pill ' + getPillClass(t.code) + '">' + t.sym + t.val + ' ' + t.code + '</span>';
+  }).join('');
+}
+
+function renderStats() {
+  var uid  = (typeof _userId !== 'undefined' && _userId) || 'default';
   var data = [];
   try {
-    if (_statsMode==='income') {
-      data = JSON.parse(localStorage.getItem('income_ledger_'+uid)||'[]');
-    } else {
-      data = JSON.parse(localStorage.getItem('expense_ledger')||'[]');
-    }
-  } catch(e){}
+    var key = _statsMode === 'income' ? 'income_ledger_' + uid : 'expense_ledger';
+    data = JSON.parse(localStorage.getItem(key) || '[]');
+  } catch(e) {}
 
-  var month = data.filter(function(i){
+  // All-time
+  var totals = calcTotals(data);
+  var apEl = document.getElementById('stats-alltime-pills');
+  var acEl = document.getElementById('stats-alltime-count');
+  if (apEl) apEl.innerHTML = makePillsHTML(totals);
+  if (acEl) acEl.textContent = data.length.toLocaleString();
+
+  syncMonthStats();
+  buildCalendar();
+}
+
+function syncMonthStats() {
+  // Sync selectors
+  var ySrc = document.getElementById('hdr-filter-year');
+  var mSrc = document.getElementById('hdr-filter-month');
+  var yDst = document.getElementById('hdr-filter-year-v');
+  var mDst = document.getElementById('hdr-filter-month-v');
+
+  // Populate dropdowns if empty
+  if (yDst && yDst.options.length === 0 && ySrc && ySrc.options.length > 0) {
+    Array.from(ySrc.options).forEach(function(o) {
+      var no = document.createElement('option');
+      no.value = o.value; no.textContent = o.textContent;
+      if (o.selected) no.selected = true;
+      yDst.appendChild(no);
+    });
+  }
+  if (mDst && mDst.options.length === 0 && mSrc && mSrc.options.length > 0) {
+    Array.from(mSrc.options).forEach(function(o) {
+      var no = document.createElement('option');
+      no.value = o.value; no.textContent = o.textContent;
+      if (o.selected) no.selected = true;
+      mDst.appendChild(no);
+    });
+  }
+
+  // Sync cal month/year to selectors
+  if (yDst) { Array.from(yDst.options).forEach(function(o){ o.selected = parseInt(o.value) === _calYear; }); }
+  if (mDst) { Array.from(mDst.options).forEach(function(o){ o.selected = parseInt(o.value) === _calMonth; }); }
+
+  var uid  = (typeof _userId !== 'undefined' && _userId) || 'default';
+  var data = [];
+  try {
+    var key = _statsMode === 'income' ? 'income_ledger_' + uid : 'expense_ledger';
+    data = JSON.parse(localStorage.getItem(key) || '[]');
+  } catch(e) {}
+
+  var month = data.filter(function(i) {
     if (!i.date) return false;
-    var p=i.date.split('-');
-    if(p.length===3&&p[2].length===4) return parseInt(p[1])===_calMonth&&parseInt(p[2])===_calYear;
-    if(p.length===3&&p[0].length===4) return parseInt(p[1])===_calMonth&&parseInt(p[0])===_calYear;
+    var p = i.date.split('-');
+    if (p.length === 3 && p[2].length === 4) return parseInt(p[1]) === _calMonth && parseInt(p[2]) === _calYear;
+    if (p.length === 3 && p[0].length === 4) return parseInt(p[1]) === _calMonth && parseInt(p[0]) === _calYear;
     return false;
   });
 
-  var totals = _calcTotals(month);
-  var mpEl = document.getElementById('app-month-pills');
-  var mcEl = document.getElementById('app-month-count');
-  var mlEl = document.getElementById('card-month-label');
-  if (mlEl) mlEl.textContent = MONTH_NAMES[_calMonth-1]+' '+_calYear;
+  var totals = calcTotals(month);
+  var mpEl = document.getElementById('stats-month-pills');
+  var mcEl = document.getElementById('stats-month-count');
+  var mlEl = document.getElementById('stats-month-label');
+  if (mlEl) mlEl.textContent = CAL_MONTHS[_calMonth-1] + ' ' + _calYear;
+  if (mpEl) mpEl.innerHTML = makePillsHTML(totals);
   if (mcEl) mcEl.textContent = month.length.toLocaleString();
-  if (mpEl) {
-    if (totals.length===0) {
-      mpEl.innerHTML='<span style="color:rgba(255,255,255,.4);font-size:.7rem;font-family:DM Mono,monospace">No data</span>';
-    } else {
-      mpEl.innerHTML = totals.map(function(t){
-        return '<span class="app-pill app-pill-'+(t.code==='NGN'?'gold':t.code==='EUR'?'blue':'green')+'" style="color:#fff">'+t.text+'</span>';
-      }).join('');
-    }
-  }
-  // Also highlight calendar
-  _buildCalendar();
 }
 
-function _calcTotals(arr) {
-  var SYMS = {'NGN':'?','EUR':'?','USD':'$','GBP':'�','GHS':'?','KES':'KSh','ZAR':'R'};
-  var NAMES = {'NGN':'NGN','EUR':'EUR','USD':'USD','GBP':'GBP','GHS':'GHS'};
-  var t = {};
-  arr.forEach(function(i){ var c=i.currency||'NGN'; t[c]=(t[c]||0)+Math.abs(i.amount||0); });
-  return Object.keys(t).sort(function(a,b){return t[b]-t[a];}).map(function(c){
-    var sym = SYMS[c]||c;
-    var nm  = NAMES[c]||c;
-    return { code:c, text:(sym)+t[c].toLocaleString(undefined,{maximumFractionDigits:0})+' '+nm };
-  });
-}
-
-// ?? Sync topbar user info ??
+// ── SYNC TOP BAR USER INFO ───────────────────────────
 function syncHomeScreen() {
-  var nm = document.getElementById('hdr-user-bar-name');
-  var un = document.getElementById('app-username');
-  if (nm && un && nm.textContent.trim()) un.textContent = 'Hi, '+nm.textContent.trim()+'!';
+  var nm  = document.getElementById('hdr-user-bar-name');
+  var un  = document.getElementById('app-username');
+  if (nm && un && nm.textContent.trim()) un.textContent = 'Hi, ' + nm.textContent.trim() + '!';
+
   var dot  = document.getElementById('hdr-user-bar-dot');
   var adot = document.getElementById('app-sync-dot');
-  if (dot && adot) adot.style.background = dot.style.background||'#555';
+  if (dot && adot) adot.style.background = dot.style.background || '#555';
+
   var sta  = document.getElementById('hdr-user-bar-status');
   var asta = document.getElementById('app-sync-status');
   if (sta && asta) asta.textContent = sta.textContent;
+
   var av = document.getElementById('app-avatar');
   if (av) {
-    var uid=(typeof _userId!=='undefined'&&_userId)?_userId:'default';
-    var saved=localStorage.getItem('expense_user_avatar_'+uid);
-    if (saved) av.innerHTML=saved;
+    var uid = (typeof _userId !== 'undefined' && _userId) || 'default';
+    var saved = localStorage.getItem('expense_user_avatar_' + uid);
+    if (saved) av.innerHTML = saved;
   }
+
   var ve = document.getElementById('app-ver');
-  if (ve && typeof APP_VERSION!=='undefined') ve.textContent=APP_VERSION;
-  _renderStats();
-  _buildCalendar();
+  if (ve && typeof APP_VERSION !== 'undefined') ve.textContent = APP_VERSION;
+
+  renderStats();
 }
 
-// Compat stubs
-function syncMonthPills(){}
-function syncAllTimePills(){}
-function syncMonthPillsSetup(){}
+// ── KEYBOARD SHORTCUTS ───────────────────────────────
+document.addEventListener('keydown', function(e) {
+  var tag = document.activeElement ? document.activeElement.tagName : '';
+  var key = e.key;
 
-// Watch for live sync updates
-setTimeout(function(){
-  if(!window.MutationObserver) return;
-  ['hdr-user-bar-name','hdr-user-bar-dot','hdr-user-bar-status'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el) new MutationObserver(function(){ syncHomeScreen(); }).observe(el,{childList:true,characterData:true,subtree:true,attributes:true});
+  // Ctrl+Enter — works inside modules (parse/save) — let original handlers run
+  // Alt+Enter  — works inside modules (notepad jump) — let original handlers run
+  // We only suppress these if NEITHER ctrl nor alt is held for our shortcuts
+  
+  // Allow Ctrl+Enter and Alt+Enter to pass through to original handlers
+  if (e.ctrlKey && key === 'Enter') return;
+  if (e.altKey  && key === 'Enter') return;
+
+  // Skip our shortcuts when typing in a field
+  if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+
+  // Check which screen we are on
+  var onModule = (function(){
+    var ms = document.getElementById('screen-module');
+    return ms && ms.style.display !== 'none';
+  })();
+
+  // Escape — go home from module
+  if (key === 'Escape') {
+    if (onModule) { e.preventDefault(); backToHome(); return; }
+  }
+
+  // Home key — always go home
+  if (key === 'Home') { e.preventDefault(); showHomeScreen(); return; }
+
+  // Arrow keys — prev/next module (when in module, without Alt)
+  if (key === 'ArrowLeft' && !e.altKey && onModule) {
+    e.preventDefault(); navPrev(); return;
+  }
+  if (key === 'ArrowRight' && !e.altKey && onModule) {
+    e.preventDefault(); navNext(); return;
+  }
+
+  // H — smart: on home = toggle card, on module = go home
+  if (key === 'h' || key === 'H') {
+    e.preventDefault();
+    if (onModule) { backToHome(); }
+    else          { toggleStatsCard(); }
+    return;
+  }
+
+  // S — switch stats Expenses/Income (home screen)
+  if (key === 's' || key === 'S') {
+    if (!onModule) {
+      e.preventDefault();
+      statsSetMode(_statsMode === 'expenses' ? 'income' : 'expenses');
+    }
+    return;
+  }
+
+  // E — stats to Expenses
+  if (key === 'e' || key === 'E') {
+    if (!onModule) { e.preventDefault(); statsSetMode('expenses'); }
+    return;
+  }
+
+  // I — stats to Income
+  if (key === 'i' || key === 'I') {
+    if (!onModule) { e.preventDefault(); statsSetMode('income'); }
+    return;
+  }
+
+  // L — log out
+  if (key === 'l' || key === 'L') {
+    e.preventDefault();
+    if (typeof logOut === 'function') logOut();
+    return;
+  }
+});
+
+// ── WATCH CLASSIC HEADER FOR LIVE UPDATES ───────────
+setTimeout(function() {
+  if (!window.MutationObserver) return;
+  ['hdr-user-bar-name','hdr-user-bar-dot','hdr-user-bar-status'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) new MutationObserver(syncHomeScreen)
+      .observe(el, {childList:true, characterData:true, subtree:true, attributes:true});
   });
 }, 2000);
 
-// Hide/show stats card
-var _cardVisible = true;
-function toggleStatsCard() {
-  _cardVisible = !_cardVisible;
-  var card = document.querySelector('.stats-card');
-  var btn  = document.getElementById('card-eye-btn');
-  if (card) card.style.display = _cardVisible ? '' : 'none';
-  if (btn)  btn.innerHTML = _cardVisible ? '&#128065;' : '&#128372;';
-}
-
-// Init
-document.addEventListener('DOMContentLoaded', function(){
+// ── INIT ─────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
   showHomeScreen();
   statsSetMode('expenses');
-  // Sync multiple times to catch when _userId loads
-  setTimeout(syncHomeScreen, 500);
-  setTimeout(syncHomeScreen, 1500);
-  setTimeout(syncHomeScreen, 4000);
+  buildCalendar();
+  setTimeout(syncHomeScreen, 800);
+  setTimeout(syncHomeScreen, 2500);
+  setTimeout(function(){ buildCalendar(); syncMonthStats(); }, 3000);
 });
-
 </script>
+
+
+<!-- FLOATING SCROLL ARROWS -->
+<div id="scroll-arrows" style="position:fixed;right:14px;bottom:80px;z-index:500;
+  display:flex;flex-direction:column;gap:8px;opacity:0;transition:opacity .3s;
+  pointer-events:none">
+  <button id="scroll-up-btn" onclick="scrollStep(-1)"
+    style="width:40px;height:40px;border-radius:50%;
+    background:rgba(30,18,6,.85);backdrop-filter:blur(8px);
+    border:1px solid rgba(200,150,30,.4);color:#e8b84b;
+    font-size:1rem;cursor:pointer;display:flex;align-items:center;
+    justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.4);
+    pointer-events:all">&#8679;</button>
+  <button id="scroll-dn-btn" onclick="scrollStep(1)"
+    style="width:40px;height:40px;border-radius:50%;
+    background:rgba(30,18,6,.85);backdrop-filter:blur(8px);
+    border:1px solid rgba(200,150,30,.4);color:#e8b84b;
+    font-size:1rem;cursor:pointer;display:flex;align-items:center;
+    justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.4);
+    pointer-events:all">&#8681;</button>
+</div>
+
+<script>
+(function(){
+  var arrows = document.getElementById('scroll-arrows');
+  var _scrollTimer;
+
+  // Show arrows when scrolling
+  function onScroll() {
+    if (!arrows) return;
+    arrows.style.opacity = '1';
+    arrows.style.pointerEvents = 'all';
+    clearTimeout(_scrollTimer);
+    _scrollTimer = setTimeout(function(){
+      arrows.style.opacity = '0';
+      arrows.style.pointerEvents = 'none';
+    }, 2000);
+  }
+
+  // Attach to both scroll containers
+  ['app-content','module-content'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('scroll', onScroll, {passive:true});
+  });
+
+  window.scrollStep = function(dir) {
+    // Find active scroll container
+    var mc = document.getElementById('module-content');
+    var ac = document.getElementById('app-content');
+    var ms = document.getElementById('screen-module');
+    var container = (ms && ms.style.display !== 'none') ? mc : ac;
+    if (!container) return;
+    container.scrollBy({ top: dir * container.clientHeight * 0.75, behavior: 'smooth' });
+    onScroll();
+  };
+})();
+</script>
+
 </body>
 </html>
